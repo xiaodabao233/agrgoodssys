@@ -74,7 +74,7 @@
                          style="background-color:rgba(0,0,0,0); border-color:transparent; margin-top:20px; text-align:center">
                         <p1 class="panel-title"
                             style="text-align:center;padding-top:30px;height:100px;color:#FFFFFF;font-size:20px;font-family:'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif">
-                            <img src="../agro/UIpic/home.png" style="height:25px">&nbsp;&nbsp;&nbsp;农场管理&nbsp;&nbsp;&nbsp;
+                            <img src="../agro/UIpic/home.png" style="height:25px">&nbsp;&nbsp;&nbsp;农园农资管理系统&nbsp;&nbsp;&nbsp;
                         </p1>
                         <span class="glyphicon glyphicon-chevron-up right"></span>
                     </div>
@@ -83,28 +83,25 @@
                          style="background-color:transparent; color:#FFFFFF; text-align:center">
                         <ul class="list-group" style="background-color:rgba(95,95,95,0.6)">
                             <li class="list-group-item" style="background-color:transparent">
-                                <a href="/views/field.jsp" style="color:#ffffff">菜地信息管理</a>
+                                <a href="/views/landinfo.jsp" style="color:#ffffff">地块信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color:transparent">
-                                <a href="/views/crops.jsp" style="color:#ffffff">农作物信息管理</a>
+                                <a href="/views/crop.jsp" style="color:#ffffff">农作物信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color:transparent">
-                                <a href="/views/plant.jsp" style="color:#ffffff">种植信息管理</a>
+                                <a href="/views/seedinfo.jsp" style="color:#ffffff">种苗信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color: transparent">
-                                <a href="/views/consumerinfo.jsp" style="color: #ffffff">客户信息管理</a>
+                                <a href="/views/dealer.jsp" style="color: #ffffff">经销商信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color:transparent">
-                                <a href="/views/sellerinfo.jsp" style="color:#ffffff">商家信息管理</a>
-                            </li>
-                            <li class="list-group-item" style="background-color:transparent">
-                                <a href="/views/assignment.jsp" style="color:#ffffff">任务信息管理</a>
+                                <a href="/views/agrsupplier.jsp" style="color:#ffffff">农资商信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color: transparent">
-                                <a href="/views/items.jsp" style="color:#ffffff">商品信息管理</a>
+                                <a href="/views/agrinfo.jsp" style="color:#ffffff">农产品信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color: transparent">
-                                <a href="/views/orders.jsp" style="color:#ffffff">订单信息管理</a>
+                                <a href="/views/agrsales.jsp" style="color:#ffffff">农产品销售管理</a>
                             </li>
                         </ul>
                     </div>

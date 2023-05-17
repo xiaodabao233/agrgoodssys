@@ -11,8 +11,7 @@ public class LogUtil {
      * @param method    方法名
      * @param errorMsg  异常信息
      */
-    public static void writeLogs(String classname, String method,
-                                 String errorMsg) {
+    public static void writeLogs(String classname, String method, String errorMsg) {
         try {
             MDC.put("classname", classname);
             MDC.put("method", method);

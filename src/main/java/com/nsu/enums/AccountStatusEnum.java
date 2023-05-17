@@ -2,7 +2,7 @@ package com.nsu.enums;
 
 public class AccountStatusEnum {
 
-    ACTIVED((byte) 1,"可用状态"),DISABLED((byte) 0,"禁用状态");
+//    ACTIVED((byte) 1,"可用状态"),DISABLED((byte) 0,"禁用状态");
     private byte status;
     private String statusInfo;
 
@@ -11,14 +11,14 @@ public class AccountStatusEnum {
         this.statusInfo = statusInfo;
     }
 
-    public static AccountStatusEnum accountStatusOf(byte index) {
-        for (AccountStatusEnum accountStatusEnum : values()) {
-            if (accountStatusEnum.getStatus() == index) {
-                return accountStatusEnum;
-            }
-        }
-        return null;
-    }
+//    public static AccountStatusEnum accountStatusOf(byte index) {
+//        for (AccountStatusEnum accountStatusEnum : values()) {
+//            if (accountStatusEnum.getStatus() == index) {
+//                return accountStatusEnum;
+//            }
+//        }
+//        return null;
+//    }
 
     public byte getStatus() {
         return status;

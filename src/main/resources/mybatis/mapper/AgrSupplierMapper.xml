@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.AgrSupplierDao">
+  <resultMap id="BaseResultMap" type="com.nsu.entity.AgrSupplier">
+    <id column="supplierid" jdbcType="VARCHAR" property="supplierid" />
+    <result column="suppliername" jdbcType="VARCHAR" property="suppliername" />
+    <result column="supplieraddress" jdbcType="VARCHAR" property="supplieraddress" />
+    <result column="concatperson" jdbcType="VARCHAR" property="concatperson" />
+    <result column="concatmethod" jdbcType="VARCHAR" property="concatmethod" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    supplierid, suppliername, supplieraddress, concatperson, concatmethod, updatetime, 
+    status
+  </sql>
+  <select id="selectByExample" parameterType="com.nsu.entity.AgrSupplierExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from agrsupplier
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from agrsupplier
+    where supplierid = #{supplierid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from agrsupplier
+    where supplierid = #{supplierid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nsu.entity.AgrSupplierExample">
+    delete from agrsupplier
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nsu.entity.AgrSupplier">
+    insert into agrsupplier (supplierid, suppliername, supplieraddress, 
+      concatperson, concatmethod, updatetime, 
+      status)
+    values (#{supplierid,jdbcType=VARCHAR}, #{suppliername,jdbcType=VARCHAR}, #{supplieraddress,jdbcType=VARCHAR}, 
+      #{concatperson,jdbcType=VARCHAR}, #{concatmethod,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nsu.entity.AgrSupplier">
+    insert into agrsupplier
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierid != null">
+        supplierid,
+      </if>
+      <if test="suppliername != null">
+        suppliername,
+      </if>
+      <if test="supplieraddress != null">
+        supplieraddress,
+      </if>
+      <if test="concatperson != null">
+        concatperson,
+      </if>
+      <if test="concatmethod != null">
+        concatmethod,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierid != null">
+        #{supplierid,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null">
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="supplieraddress != null">
+        #{supplieraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="concatperson != null">
+        #{concatperson,jdbcType=VARCHAR},
+      </if>
+      <if test="concatmethod != null">
+        #{concatmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nsu.entity.AgrSupplierExample" resultType="java.lang.Long">
+    select count(*) from agrsupplier
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update agrsupplier
+    <set>
+      <if test="row.supplierid != null">
+        supplierid = #{row.supplierid,jdbcType=VARCHAR},
+      </if>
+      <if test="row.suppliername != null">
+        suppliername = #{row.suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="row.supplieraddress != null">
+        supplieraddress = #{row.supplieraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="row.concatperson != null">
+        concatperson = #{row.concatperson,jdbcType=VARCHAR},
+      </if>
+      <if test="row.concatmethod != null">
+        concatmethod = #{row.concatmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="row.updatetime != null">
+        updatetime = #{row.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.status != null">
+        status = #{row.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update agrsupplier
+    set supplierid = #{row.supplierid,jdbcType=VARCHAR},
+      suppliername = #{row.suppliername,jdbcType=VARCHAR},
+      supplieraddress = #{row.supplieraddress,jdbcType=VARCHAR},
+      concatperson = #{row.concatperson,jdbcType=VARCHAR},
+      concatmethod = #{row.concatmethod,jdbcType=VARCHAR},
+      updatetime = #{row.updatetime,jdbcType=TIMESTAMP},
+      status = #{row.status,jdbcType=INTEGER}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nsu.entity.AgrSupplier">
+    update agrsupplier
+    <set>
+      <if test="suppliername != null">
+        suppliername = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="supplieraddress != null">
+        supplieraddress = #{supplieraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="concatperson != null">
+        concatperson = #{concatperson,jdbcType=VARCHAR},
+      </if>
+      <if test="concatmethod != null">
+        concatmethod = #{concatmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where supplierid = #{supplierid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nsu.entity.AgrSupplier">
+    update agrsupplier
+    set suppliername = #{suppliername,jdbcType=VARCHAR},
+      supplieraddress = #{supplieraddress,jdbcType=VARCHAR},
+      concatperson = #{concatperson,jdbcType=VARCHAR},
+      concatmethod = #{concatmethod,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where supplierid = #{supplierid,jdbcType=VARCHAR}
+  </update>
+</mapper>

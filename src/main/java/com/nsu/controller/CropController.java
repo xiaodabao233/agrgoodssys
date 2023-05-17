@@ -1,0 +1,95 @@
+package com.nsu.controller;
+
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.nsu.entity.Crop;
+import com.nsu.entity.Msg;
+import com.nsu.service.impl.CropServiceImpl;
+import com.nsu.util.LogUtil;
+import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+
+@Controller
+public class CropController {
+
+    @Autowired
+    CropServiceImpl cropServiceImpl;
+
+
+    @RequestMapping("/crop-list")
+    @ResponseBody
+    public Msg getCropWtihJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn,Model model) {
+        PageHelper.startPage(pn, 10);
+        List<Crop> crops = cropServiceImpl.getAll();
+
+        PageInfo page = new PageInfo(crops, 5);
+        return Msg.success().add("pageInfo", page);
+    }
+
+    @RequestMapping(value = "/crop", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg saveCrop(Crop crop) {
+        cropServiceImpl.saveCrop(crop);
+        LogUtil.writeLogs(this.getClass().getName(),
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
+                "");
+        return Msg.success();
+    }
+
+    @RequestMapping(value = "/crop/{cropid}", method = RequestMethod.PUT)
+    @ResponseBody
+    public Msg updateCrop(Crop crop, HttpServletRequest request) {
+        cropServiceImpl.updateCrop(crop);
+        LogUtil.writeLogs(this.getClass().getName(),
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
+                "");
+        return Msg.success();
+    }
+
+    @RequestMapping(value = "/crop/{cropids}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Msg deleteCrop(@PathVariable("cropids") String crops) {
+        //批量删除
+        if (crops.contains("-")) {
+            List<String> del_ids = new ArrayList<>();
+            String[] str_ids = crops.split("-");
+            //组装id的集合
+            for (String string : str_ids) {
+                del_ids.add(string);
+            }
+            cropServiceImpl.deleteBatch(del_ids);
+            LogUtil.writeLogs(this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[1].getMethodName(),
+                    "");
+        } else {
+            cropServiceImpl.deleteCrop(crops);
+            LogUtil.writeLogs(this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[1].getMethodName(),
+                    "");
+        }
+        return Msg.success();
+    }
+
+    @RequestMapping(value = "/crop/{cropid}", method = RequestMethod.GET)
+    @ResponseBody
+    public Msg getCrop(@PathVariable("cropid") String cropid) {
+
+        Crop crop = cropServiceImpl.getCrops(cropid);
+        return Msg.success().add("crops", crop);
+    }
+
+    //查出所有农作物信息
+    @RequestMapping(value = "/crops", method = RequestMethod.GET)
+    @ResponseBody
+    public Msg getCrops() {
+        List<Crop> list = cropServiceImpl.getAll();
+        return Msg.success().add("crops", list);
+    }
+}

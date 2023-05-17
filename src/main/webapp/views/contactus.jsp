@@ -30,7 +30,7 @@
         <div class="row" style="height:50px">
             <div class="col-md-3" style="margin-top:10px;text-align:center;font-size:20px">联系我们</div>
         </div>
-        <div style="font-size:20px"><br>Agro农场信息管理系统<br>
+        <div style="font-size:20px"><br>农园农资管理系统<br>
         </div>
     </div>
 </div>

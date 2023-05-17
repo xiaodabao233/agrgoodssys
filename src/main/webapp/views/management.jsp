@@ -41,16 +41,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">邮箱</label>
+                        <label class="col-sm-2 control-label">昵称</label>
                         <div class="col-sm-10">
-                            <p class="form-control-static">${sessionScope.userEmail}</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">注册时间</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static"><fmt:formatDate value="${sessionScope.registerTime}"
-                                                                           pattern="yyyy-MM-dd HH:mm:ss"/></p>
+                            <p class="form-control-static">${sessionScope.userNick}</p>
                         </div>
                     </div>
 
@@ -71,7 +64,7 @@
                          style="background-color:rgba(0,0,0,0); border-color:transparent; margin-top:20px; text-align:center">
                         <p1 class="panel-title"
                             style="text-align:center;padding-top:30px;height:100px;color:#FFFFFF;font-size:20px;font-family:'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif">
-                            <img src="../agro/UIpic/home.png" style="height:25px">&nbsp;&nbsp;&nbsp;农场管理&nbsp;&nbsp;&nbsp;
+                            <img src="../agro/UIpic/home.png" style="height:25px">&nbsp;&nbsp;&nbsp;农园农资项目管理&nbsp;&nbsp;&nbsp;
                         </p1>
                         <span class="glyphicon glyphicon-chevron-up right"></span>
                     </div>
@@ -80,28 +73,25 @@
                          style="background-color:transparent; color:#FFFFFF; text-align:center">
                         <ul class="list-group" style="background-color:rgba(95,95,95,0.6)">
                             <li class="list-group-item" style="background-color:transparent">
-                                <a href="/views/field.jsp" style="color: #ffffff">菜地信息管理</a>
+                                <a href="/views/landinfo.jsp" style="color:#ffffff">地块信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color:transparent">
-                                <a href="/views/crops.jsp" style="color: #ffffff">农作物信息管理</a>
+                                <a href="/views/crop.jsp" style="color:#ffffff">农作物信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color:transparent">
-                                <a href="/views/plant.jsp" style="color:#ffffff">种植信息管理</a>
+                                <a href="/views/seedinfo.jsp" style="color:#ffffff">种苗信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color: transparent">
-                                <a href="/views/consumerinfo.jsp" style="color: #ffffff">客户信息管理</a>
+                                <a href="/views/dealer.jsp" style="color: #ffffff">经销商信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color:transparent">
-                                <a href="/views/sellerinfo.jsp" style="color: #ffffff">商家信息管理</a>
-                            </li>
-                            <li class="list-group-item" style="background-color:transparent">
-                                <a href="/views/assignment.jsp" style="color: #ffffff">任务信息管理</a>
+                                <a href="/views/agrsupplier.jsp" style="color:#ffffff">农资商信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color: transparent">
-                                <a href="/views/items.jsp" style="color: #ffffff">商品信息管理</a>
+                                <a href="/views/agrinfo.jsp" style="color:#ffffff">农产品信息管理</a>
                             </li>
                             <li class="list-group-item" style="background-color: transparent">
-                                <a href="/views/orders.jsp" style="color: #ffffff">订单信息管理</a>
+                                <a href="/views/agrsales.jsp" style="color:#ffffff">农产品销售管理</a>
                             </li>
                         </ul>
                     </div>
@@ -140,12 +130,11 @@
                 <div class="row" style="height:50px">
                     <div class="col-md-3" style="margin-top:10px;text-align:center;font-size:20px">系统公告</div>
                 </div>
-                <div style="font-size:20px"><br>Agro农场信息管理系统<br><br>作者：<br>关文聪、许亘成、吴金辰、黄捷敏、王明义<br><br>项目开源地址：<br><a
-                        href="https://github.com/Eternity-Myth/Farm" style="color: #ffffff">https://github.com/Eternity-Myth/Farm</a>
+                <div style="font-size:20px"><br>农园农资管理系统<br><br>作者：<br>朱安林<br><br>项目开源地址：<br><a
+                        href="https://github.com/xiaodabao233/agrgoodssys" style="color: #ffffff">https://github.com/xiaodabao233/agrgoodssys</a>
                     <br><br>基本开发环境：JDK
                     1.8.0_162、Apache-Tomcat-9.0.6、MySQL 5.7.22 Community Server<br><br>使用框架：Spring+SpringMVC+Mybatis（主要）,Maven（项目依赖管理）,Bootstrap（前端框架）<br><br>逆向工程：MyBatis-Generator
                 </div>
-            </div>
         </div>
         <div class="col-md-1" style="background-color:rgba(0,0,0,0.8); height:615px">
             <div class="panel panel-primary leftMenu" style="background-color:transparent; border-color:transparent">
@@ -195,6 +184,19 @@
         font-size: 15px;
     }
 </style>
+<style type="text/css">
+        p {
+            border-right: thin solid #FFFFFF;
+        }
+
+        p1 {
+        }
+
+        nav {
+            font-family: bradleyhanditcttbold;
+            font-size: 15px;
+        }
+    </style>
 </body>
 <script>
     $(function () {

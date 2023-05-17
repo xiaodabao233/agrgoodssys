@@ -1,6 +1,10 @@
 package com.nsu.vo;
 
 public class UserSignUpForm {
+
+
+
+    private String userNick;
     private String userName;
     private String userPass;
     private String userEmail;
@@ -24,6 +28,14 @@ public class UserSignUpForm {
         this.userEmail = userEmail;
     }
 
+    public UserSignUpForm(String userNick, String userName, String userPass, String userEmail, String code) {
+        this.userNick = userNick;
+        this.userName = userName;
+        this.userPass = userPass;
+        this.userEmail = userEmail;
+        this.code = code;
+    }
+
     @Override
     public String toString() {
         return "UserSignForm{" +
@@ -31,6 +43,14 @@ public class UserSignUpForm {
                 ", userPass='" + userPass + '\'' +
                 ", userEmail='" + userEmail + '\'' +
                 '}';
+    }
+
+    public String getUserNick() {
+        return userNick;
+    }
+
+    public void setUserNick(String userNick) {
+        this.userNick = userNick;
     }
 
     public String getUserName() {
@@ -55,5 +75,4 @@ public class UserSignUpForm {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
-    }
-}
+    }}
