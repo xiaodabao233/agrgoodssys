@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+<!-- 数据库驱动-->
+<!--    <classPathEntry  location="mysql-connector-java-8.0.11.jar"/>-->
+    <context id="mysqlTables"  targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/agrgoods?serverTimezone=UTC" userId="root" password="123456">
+        <!--设置可以获取tables remarks信息-->
+        <property name="useInformationSchema" value="true"/>
+            <!--设置可以获取remarks信息-->
+            <property name="remarks" value="true"/>
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置-->
+        <javaModelGenerator targetPackage="com.nsu.entity" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置-->
+        <sqlMapGenerator targetPackage="com.nsu.dao.mapper" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.nsu.dao" targetProject="src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
+<!--        <table schema="agrgoods" tableName="landinfo" domainObjectName="LandInfo"></table>-->
+<!--        <table schema="agrgoods" tableName="crop" domainObjectName="Crop"></table>-->
+<!--        <table schema="agrgoods" tableName="seedinfo" domainObjectName="SeedInfo"></table>-->
+<!--        <table schema="agrgoods" tableName="dealer" domainObjectName="Dealer"></table>-->
+<!--        <table schema="agrgoods" tableName="agrsupplier" domainObjectName="AgrSupplier"></table>-->
+<!--        <table schema="agrgoods" tableName="agrinfo" domainObjectName="AgrInfo"></table>-->
+<!--        <table schema="agrgoods" tableName="agrsales" domainObjectName="AgrSales"></table>-->
+        <table schema="agrgoods" tableName="useraccount" domainObjectName="UserAccount"></table>
+<!--        <table schema="agrgoods" tableName="log" domainObjectName="Log"></table>-->
+    </context>
+</generatorConfiguration>
