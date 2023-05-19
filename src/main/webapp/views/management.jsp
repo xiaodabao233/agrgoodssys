@@ -132,8 +132,9 @@
                 </div>
                 <div style="font-size:20px"><br>农园农资管理系统<br><br>作者：<br>朱安林<br><br>项目开源地址：<br><a
                         href="https://github.com/xiaodabao233/agrgoodssys" style="color: #ffffff">https://github.com/xiaodabao233/agrgoodssys</a>
-                    <br><br>基本开发环境：JDK
-                    1.8.0_162、Apache-Tomcat-9.0.6、MySQL 5.7.22 Community Server<br><br>使用框架：Spring+SpringMVC+Mybatis（主要）,Maven（项目依赖管理）,Bootstrap（前端框架）<br><br>逆向工程：MyBatis-Generator
+                    <br>基本开发环境：JDK11、Apache-Tomcat-8.5、MySQL 5.7 Community Server<br>
+                    <br>使用框架：Spring+SpringMVC+Mybatis,Maven,Bootstrap<br>
+                    <br>逆向工程：MyBatis-Generator
                 </div>
         </div>
         <div class="col-md-1" style="background-color:rgba(0,0,0,0.8); height:615px">
