@@ -1,8 +1,4 @@
-﻿/**
- * 处理登录、注册请求的js代码
- *
- * Created by 关文聪 on 2017/2/5.
- */
+﻿
 $(document).ready(function () {
 
     $('#signInForm').bootstrapValidator({

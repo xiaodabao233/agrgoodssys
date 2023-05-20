@@ -27,6 +27,13 @@ public class UserAccount {
         this.upassword = userPass;
     }
 
+    public UserAccount(String userId, String userNick, String userName, String userPass) {
+        this.uid = userId;
+        this.unickname = userNick;
+        this.uaccount = userName;
+        this.upassword = userPass;
+    }
+
 
     public String getUid() {
         return uid;

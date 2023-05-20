@@ -16,7 +16,7 @@ public class LandInfoServiceImpl implements LandInfoService {
 
     //查询所有
     public List<LandInfo> getAll() {
-//        LandInfoDao.synchronize();
+//        landInfoDao.synchronize();
         return landInfoDao.selectByExample(null);
     }
 

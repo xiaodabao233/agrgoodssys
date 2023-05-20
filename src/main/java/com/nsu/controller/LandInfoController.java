@@ -23,8 +23,6 @@ import java.util.List;
 public class LandInfoController {
     @Autowired
     LandInfoServiceImpl landInfoServiceImpl;
-    @Autowired
-    CropServiceImpl cropServiceImpl;
 
     @RequestMapping("/landinfo-list")
     @ResponseBody

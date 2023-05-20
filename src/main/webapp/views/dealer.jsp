@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-    <title>经销商管理</title>
+    <title>经销商信息管理</title>
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
@@ -26,77 +26,109 @@
     <script src="../js/sign.js"></script>
 </head>
 <body style="background-image:url(../agro/UIpic/managementbackground.jpg);background-repeat:no-repeat;background-attachment:fixed;background-size: 100%">
-<!-- 客户添加的模态框 -->
-<div class="modal fade" id="consumerinfoAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- 经销商添加的模态框 -->
+<div class="modal fade" id="dealerAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">客户添加</h4>
+                <h4 class="modal-title" id="myModalLabel">添加经销商</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">客户名</label>
+                        <label class="col-sm-2 control-label">经销商编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="conName" class="form-control" id="conName_add_input"
-                                   placeholder="Name">
+                            <input type="text" name="distributorid" class="form-control" id="distributorid_add_input"
+                                   placeholder="distributorid">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">手机号</label>
+                        <label class="col-sm-2 control-label">经销商名称</label>
                         <div class="col-sm-10">
-                            <input type="text" name="conPhone" class="form-control" id="conPhone_add_input"
-                                   placeholder="Phone">
+                            <input type="text" name="distributorname" class="form-control" id="distributorname_add_input"
+                                   placeholder="distributorname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">经销商地址</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="distributoraddress" class="form-control" id="distributoraddress_add_input"
+                                   placeholder="distributoraddress">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">联系人</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="concatperson" class="form-control" id="concatperson_add_input"
+                                   placeholder="concatperson">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">联系方式</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="concatmethod" class="form-control" id="concatmethod_add_input"
+                                   placeholder="concatmethod">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="consumerinfo_save_btn" style="color: #0f0f0f">保存
+                <button type="button" class="btn btn-primary" id="dealer_save_btn" style="color: #0f0f0f">保存
                 </button>
             </div>
         </div>
     </div>
 </div>
-<!-- 客户信息修改的模态框 -->
-<div class="modal fade" id="consumerinfoUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- 经销商信息修改的模态框 -->
+<div class="modal fade" id="dealerUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">客户信息修改</h4>
+                <h4 class="modal-title">经销商信息修改</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">ID</label>
+                        <label class="col-sm-2 control-label">经销商编号</label>
                         <div class="col-sm-10">
-                            <p class="form-control-static" id="consumerID_update_static"></p>
+                            <input type="text" name="distributorid" class="form-control" id="distributorid_update_input"
+                                   placeholder="要修改的ID号">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">客户名</label>
+                        <label class="col-sm-2 control-label">经销商名称</label>
                         <div class="col-sm-10">
-                            <input type="text" name="conName" class="form-control" id="conName_update_input">
-                            <span class="help-block"></span>
+                            <input type="text" name="distributorname" class="form-control" id="distributorname_update_input">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">手机号</label>
+                        <label class="col-sm-2 control-label">经销商地址</label>
                         <div class="col-sm-10">
-                            <input type="text" name="conPhone" class="form-control" id="conPhone_update_input">
-                            <span class="help-block"></span>
+                            <input type="text" name="distributoraddress" class="form-control" id="distributoraddress_update_input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">联系人</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="concatperson" class="form-control" id="concatperson_update_input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">联系方式</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="concatmethod" class="form-control" id="concatmethod_update_input">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="consumerinfo_update_btn" style="color: #0f0f0f">更新
+                <button type="button" class="btn btn-primary" id="dealer_update_btn" style="color: #0f0f0f">更新
                 </button>
             </div>
         </div>
@@ -208,11 +240,11 @@
                 <div class="row" style="height:50px">
                     <div class="col-md-3" style="margin-top:10px;text-align:center;font-size:20px">经销商管理</div>
                     <div class="col-md-4 col-md-offset-5" style="margin-top:10px;text-align:right;font-size:20px">
-                        <button class="btn btn-primary" id="consumerinfo_add_modal_btn"
+                        <button class="btn btn-primary" id="dealer_add_modal_btn"
                                 style="background-color:transparent; vertical-align:middle"><img
                                 src="../agro/UIpic/plus.png" style="height:15px">&nbsp;&nbsp;添&nbsp;加
                         </button>
-                        <button class="btn btn-danger" id="consumerinfo_delete_all_btn"
+                        <button class="btn btn-danger" id="dealer_delete_all_btn"
                                 style="background-color:transparent; vertical-align:middle"><img
                                 src="../agro/UIpic/delete.png" style="height:15px">&nbsp;&nbsp;删&nbsp;除
                         </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -221,7 +253,7 @@
                 <div class="col-md-12" style="background-color:rgba(0,0,0,0.7);height:585px;color:#FFFFFF">
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-hover" id="consumerinfo_table">
+                            <table class="table table-hover" id="dealer_table">
                                 <thead>
                                 <tr style="color: #ffffff">
                                     <th style="text-align:center">
@@ -295,12 +327,12 @@
 
     function to_page(pn) {
         $.ajax({
-            url: "${APP_PATH}/consumerinfo-list",
+            url: "${APP_PATH}/dealer-list",
             data: "pn=" + pn,
             type: "GET",
             success: function (result) {
                 //1、解析并显示客户数据
-                build_consumerinfo_table(result);
+                build_dealer_table(result);
                 //2、解析并显示分页信息
                 build_page_info(result);
                 //3、解析显示分页条数据
@@ -309,16 +341,19 @@
         });
     }
 
-    function build_consumerinfo_table(result) {
+    function build_dealer_table(result) {
         //清空table表格
-        $("#consumerinfo_table tbody").empty();
-        var consumerinfo = result.extend.pageInfo.list;
-        $.each(consumerinfo, function (index, item) {
+        $("#dealer_table tbody").empty();
+        var dealer = result.extend.pageInfo.list;
+        $.each(dealer, function (index, item) {
             var checkBoxTd = $("<td><input type='checkbox' class='check_item'/></td>");
-            var consumerIdTd = $("<td></td>").append(item.id);
-            var conNameTd = $("<td></td>").append(item.conName);
-            var conPhoneTd = $("<td></td>").append(item.conPhone);
-            var statusTd = $("<td></td>").append(item.conState ? "正常" : "禁用");
+
+            var distributorIdTd = $("<td></td>").append(item.distributorid);
+            var distributorNameTd = $("<td></td>").append(item.distributorname);
+            var distributorAddressTd = $("<td></td>").append(item.distributoraddress);
+            var concatPersonTd = $("<td></td>").append(item.concatperson);
+            var concatMethodTd = $("<td></td>").append(item.concatmethod);
+
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前菜地id
@@ -330,12 +365,13 @@
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
-                .append(consumerIdTd)
-                .append(conNameTd)
-                .append(conPhoneTd)
-                .append(statusTd)
+                .append(distributorIdTd)
+                .append(distributorNameTd)
+                .append(distributorAddressTd)
+                .append(concatPersonTd)
+                .append(concatMethodTd)
                 .append(btnTd)
-                .appendTo("#consumerinfo_table tbody");
+                .appendTo("#dealer_table tbody");
         });
     }
 
@@ -408,23 +444,23 @@
         navEle.appendTo("#page_nav_area");
     }
 
-    $("#consumerinfo_add_modal_btn").click(function () {
-        $("#consumerinfoAddModal").modal({
+    $("#dealer_add_modal_btn").click(function () {
+        $("#dealerAddModal").modal({
             backdrop: "static"
         });
     });
 
-    $("#consumerinfo_save_btn").click(function () {
+    $("#dealer_save_btn").click(function () {
         // 1、模态框中填写的表单数据提交给服务器进行保存
         // 2、发送ajax请求保存客户信息
         $.ajax({
-            url: "${APP_PATH}/consumerinfo",
+            url: "${APP_PATH}/dealer",
             type: "POST",
-            data: $("#consumerinfoAddModal form").serialize(),
+            data: $("#dealerAddModal form").serialize(),
             success: function (result) {
                 //客户信息保存成功
                 //1、关闭模态框
-                $("#consumerinfoAddModal").modal('hide');
+                $("#dealerAddModal").modal('hide');
                 //2、来到最后一页，显示刚才保存的数据
                 //发送ajax请求显示最后一页数据即可
                 to_page(totalPages);
@@ -435,11 +471,11 @@
     //单个删除
     $(document).on("click", ".delete_btn", function () {
         //1、弹出是否确认删除对话框
-        var consumerinfoId = $(this).attr("del-id");
+        var dealerId = $(this).attr("del-id");
         if (confirm("确认删除吗？")) {
             //确认，发送ajax请求删除即可
             $.ajax({
-                url: "${APP_PATH}/consumerinfo/" + consumerinfoId,
+                url: "${APP_PATH}/dealer/" + dealerId,
                 type: "DELETE",
                 success: function (result) {
                     alert(result.msg);
@@ -466,7 +502,7 @@
     });
 
     //点击全部删除，就批量删除
-    $("#consumerinfo_delete_all_btn").click(function () {
+    $("#dealer_delete_all_btn").click(function () {
         //
         var del_idstr = "";
         $.each($(".check_item:checked"), function () {
@@ -478,7 +514,7 @@
         if (confirm("确认删除吗？")) {
             //发送ajax请求删除
             $.ajax({
-                url: "${APP_PATH}/consumerinfo/" + del_idstr,
+                url: "${APP_PATH}/dealer/" + del_idstr,
                 type: "DELETE",
                 success: function (result) {
                     alert(result.msg);
@@ -494,37 +530,39 @@
     //jquery新版没有live，使用on进行替代
     $(document).on("click", ".edit_btn", function () {
         //查出客户信息，显示客户信息
-        getConsumerInfo($(this).attr("edit-id"));
+        getDealer($(this).attr("edit-id"));
         //把客户信息的id传递给模态框的更新按钮
-        $("#consumerinfo_update_btn").attr("edit-id", $(this).attr("edit-id"));
-        $("#consumerinfoUpdateModal").modal({
+        $("#dealer_update_btn").attr("edit-id", $(this).attr("edit-id"));
+        $("#dealerUpdateModal").modal({
             backdrop: "static"
         });
 
-        function getConsumerInfo(id) {
+        function getDealer(id) {
             $.ajax({
-                url: "${APP_PATH}/consumerinfo/" + id,
+                url: "${APP_PATH}/dealer/" + id,
                 type: "GET",
                 success: function (result) {
                     // console.log(result);
-                    var consumerinfoData = result.extend.consumerinfo;
-                    $("#consumerID_update_static").text(consumerinfoData.id);
-                    $("#conName_update_input").val(consumerinfoData.conName);
-                    $("#conPhone_update_input").val(consumerinfoData.conPhone);
+                    var dealerData = result.extend.dealer;
+                    $("#distributorid_update_input").val(dealerData.distributorid);
+                    $("#distributorname_update_input").val(dealerData.distributorname);
+                    $("#distributoraddress_update_input").val(dealerData.distributoraddress);
+                    $("#concatperson_update_input").val(dealerData.concatperson);
+                    $("#concatmethod_update_input").val(dealerData.concatmethod);
                 }
             });
         }
 
-        $("#consumerinfo_update_btn").click(function () {
+        $("#dealer_update_btn").click(function () {
             //发送ajax请求保存更新的客户信息数据
             $.ajax({
-                url: "${APP_PATH}/consumerinfo/" + $(this).attr("edit-id"),
+                url: "${APP_PATH}/dealer/" + $(this).attr("edit-id"),
                 type: "PUT",
-                data: $("#consumerinfoUpdateModal form").serialize(),
+                data: $("#dealerUpdateModal form").serialize(),
                 success: function (result) {
                     //alert(result.msg);
                     //1、关闭对话框
-                    $("#consumerinfoUpdateModal").modal("hide");
+                    $("#dealerUpdateModal").modal("hide");
                     //2、回到本页面
                     to_page(currentPage);
                 }

@@ -34,7 +34,7 @@ public class DealerController {
     }
 
     //经销商信息保存
-    @RequestMapping(value = "/deler", method = RequestMethod.POST)
+    @RequestMapping(value = "/dealer", method = RequestMethod.POST)
     @ResponseBody
     public Msg saveDealer(Dealer dealer) {
         dealerServiceImpl.saveDealer(dealer);

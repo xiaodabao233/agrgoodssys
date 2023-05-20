@@ -15,8 +15,6 @@
     <link href="css/font.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrapValidator.min.css">
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body style="background-image:url(agro/UIpic/background.jpg);background-repeat:no-repeat;background-attachment:fixed;background-size: 100%">
@@ -109,7 +107,7 @@
     </form>
 </div>
 
-<script src="lib/jquery-1.12.3.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 <script src="lib/bootstrap.min.js"></script>
 <script src="lib/bootstrapValidator.min.js"></script>
 <script src="js/bootstrap.js"></script>

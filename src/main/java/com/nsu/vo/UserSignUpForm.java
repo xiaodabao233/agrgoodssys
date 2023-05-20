@@ -1,9 +1,12 @@
 package com.nsu.vo;
 
+import com.nsu.common.IDCommon;
+
 public class UserSignUpForm {
 
 
 
+    private String userId;
     private String userNick;
     private String userName;
     private String userPass;
@@ -43,6 +46,15 @@ public class UserSignUpForm {
                 ", userPass='" + userPass + '\'' +
                 ", userEmail='" + userEmail + '\'' +
                 '}';
+    }
+
+    public String getUserId() {
+        userId = IDCommon.createID();
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getUserNick() {

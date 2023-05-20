@@ -152,9 +152,10 @@
                                                style="background-color:transparent; border-color:#FFFFFF"/>
                                     </th>
                                     <th style="text-align:center">#ID</th>
+                                    <th style="text-align:center">昵称</th>
                                     <th style="text-align:center">用户名</th>
                                     <th style="text-align:center">密码</th>
-                                    <th style="text-align:center">邮箱</th>
+                                    <th style="text-align:center">用户角色</th>
                                     <th style="text-align:center">注册时间</th>
                                     <th style="text-align:center">状态</th>
                                     <th style="text-align:center"><img src="../agro/UIpic/tools.png"
@@ -243,13 +244,15 @@
         $("#users_table tbody").empty();
         var users = result.extend.pageInfo.list;
         $.each(users, function (index, item) {
+            console.log(item)
             var checkBoxTd = $("<td><input type='checkbox' class='check_item'/></td>");
-            var userIdTd = $("<td></td>").append(item.id);
-            var userNameTd = $("<td></td>").append(item.userName);
-            var userPassTd = $("<td></td>").append(item.userPass);
-            var userEmailTd = $("<td></td>").append(item.userEmail);
-            var registerTime = getMyDate(item.registerTime);
-            var registerTimeTd = $("<td></td>").append(registerTime);
+            var uIdTd = $("<td></td>").append(item.uid);
+            var uNickNameTd = $("<td></td>").append(item.unickname);
+            var uAccountTd = $("<td></td>").append(item.account);
+            var uPasswordTd = $("<td></td>").append(item.upassword);
+            var roleFlagTd = $("<td></td>").append(item.roleflag);
+
+            var updateTimeTd = $("<td></td>").append(item.updatetime);
             var statusTd = $("<td></td>").append(item.status ? "正常" : "禁用");
             var statusBtn = $("<button></button>").addClass("btn btn-danger btn-sm status_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-ban-circle")).append("禁/启用");
@@ -262,29 +265,18 @@
             var btnTd = $("<td></td>").append(statusBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
-                .append(userIdTd)
-                .append(userNameTd)
-                .append(userPassTd)
-                .append(userEmailTd)
-                .append(registerTimeTd)
+                .append(uIdTd)
+                .append(uAccountTd)
+                .append(uPasswordTd)
+                .append(uNickNameTd)
+                .append(roleFlagTd)
+                .append(updateTimeTd)
                 .append(statusTd)
                 .append(btnTd)
                 .appendTo("#users_table tbody");
         });
     }
 
-    //获得年月日      得到日期oTime
-    function getMyDate(str) {
-        var oDate = new Date(str),
-            oYear = oDate.getFullYear(),
-            oMonth = oDate.getMonth() + 1,
-            oDay = oDate.getDate(),
-            oHour = oDate.getHours(),
-            oMin = oDate.getMinutes(),
-            oSen = oDate.getSeconds(),
-            oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay) + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' + getzf(oSen);//最后拼接时间
-        return oTime;
-    };
 
     //补0操作
     function getzf(num) {

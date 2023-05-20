@@ -87,7 +87,7 @@
             <br>作者：
             <br>朱安林<br>
             <br>项目开源地址：<br>
-            <a href="https://github.com/Eternity-Myth/Farm" style="color: #ffffff">https://github.com/Eternity-Myth/Farm</a><br>
+            <a href="https://github.com/xiaodabao233/agrgoodssys" style="color: #ffffff">https://github.com/xiaodabao233/agrgoodssys</a><br>
             <br>基本开发环境：JDK11、Apache-Tomcat-8.5、MySQL 5.7 Community Server<br>
             <br>使用框架：Spring+SpringMVC+Mybatis,Maven,Bootstrap<br>
             <br>逆向工程：MyBatis-Generator

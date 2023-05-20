@@ -44,6 +44,7 @@ public class UserAccountServiceImpl implements UserAccountService {
             } else {
 //                userSignUpForm.setuId(IDCommon.createID());
                 UserAccount user = new UserAccount(
+                        userSignUpForm.getUserId(),
                         userSignUpForm.getUserNick(),
                         userSignUpForm.getUserName(),
                         userSignUpForm.getUserPass()
