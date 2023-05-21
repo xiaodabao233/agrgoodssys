@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +32,22 @@ public class SeedInfoController {
         return Msg.success().add("pageInfo", page);
     }
 
-    //种植信息保存
+    //保存
     @RequestMapping(value = "/seedinfo", method = RequestMethod.POST)
     @ResponseBody
     public Msg savaSeedInfo(SeedInfo seedInfo) {
         seedInfoServiceImpl.savaSeedInfo(seedInfo);
+        LogUtil.writeLogs(this.getClass().getName(),
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
+                "");
+        return Msg.success();
+    }
+
+    //更新
+    @RequestMapping(value = "/seedinfo/{seedid}", method = RequestMethod.PUT)
+    @ResponseBody
+    public Msg updateSeedInfo(SeedInfo seedInfo, HttpServletRequest request) {
+        seedInfoServiceImpl.updateSeedInfo(seedInfo);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -66,12 +78,12 @@ public class SeedInfoController {
         return Msg.success();
     }
 
-    //根据记录号查询种植信息
-    @RequestMapping(value = "/seedinfo/{id}", method = RequestMethod.GET)
+    //根据记录号查询
+    @RequestMapping(value = "/seedinfo/{seedid}", method = RequestMethod.GET)
     @ResponseBody
     public Msg getSeedInfo(@PathVariable("seedid") String seedid) {
         SeedInfo seedInfo = seedInfoServiceImpl.getSeedInfo(seedid);
-        return Msg.success().add("plant", seedInfo);
+        return Msg.success().add("seedInfo", seedInfo);
     }
 
 

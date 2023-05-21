@@ -27,7 +27,7 @@
 </head>
 <body style="background-image:url(../agro/UIpic/managementbackground.jpg);background-repeat:no-repeat;background-attachment:fixed;background-size: 100%">
 <!-- 农资商添加的模态框 -->
-<div class="modal fade" id="agrSupplierModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="agrSupplierAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -103,8 +103,9 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">农资商编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="supplierid" class="form-control"
-                                   id="supplierid_update_input">
+                            <p class="form-control-static" id="supplierid_update_static"></p>
+<%--                            <input type="text" name="supplierid" class="form-control"--%>
+<%--                                   id="supplierid_update_input">--%>
                             <span class="help-block"></span>
                         </div>
                     </div>
@@ -268,7 +269,7 @@
                 <div class="col-md-12" style="background-color:rgba(0,0,0,0.7);height:585px;color:#FFFFFF">
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-hover" id="agrSupplier_table">
+                            <table class="table table-hover" id="agrsupplier_table">
                                 <thead>
                                 <tr style="color:#ffffff">
                                     <th style="text-align:center">
@@ -363,34 +364,34 @@
 
     function build_agrsupplier_table(result) {
         //清空table表格
-        $("#agrSupplier_table tbody").empty();
+        $("#agrsupplier_table tbody").empty();
         var agrsupplier = result.extend.pageInfo.list;
         $.each(agrsupplier, function (index, item) {
             var checkBoxTd = $("<td><input type='checkbox' class='check_item'/></td>");
             var supplierIdTd = $("<td></td>").append(item.supplierid);
             var supplierNameTd = $("<td></td>").append(item.suppliername);
             var supplierAddressTd = $("<td></td>").append(item.supplieraddress);
-            var conCatPersonTd = $("<td></td>").append(item.conCatPerson);
+            var conCatPersonTd = $("<td></td>").append(item.concatperson);
             var conCatMethodTd = $("<td></td>").append(item.concatmethod);
 
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前商家id
-            editBtn.attr("edit-id", item.id);
+            editBtn.attr("edit-id", item.supplierid);
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的商家id
-            delBtn.attr("del-id", item.id);
+            delBtn.attr("del-id", item.supplierid);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
                 .append(supplierIdTd)
                 .append(supplierNameTd)
-                .append(conCatMethodTd)
-                .append(conCatPersonTd)
                 .append(supplierAddressTd)
+                .append(conCatPersonTd)
+                .append(conCatMethodTd)
                 .append(btnTd)
-                .appendTo("#agrSupplier_table tbody");
+                .appendTo("#agrsupplier_table tbody");
         });
     }
 
@@ -463,6 +464,14 @@
         navEle.appendTo("#page_nav_area");
     }
 
+    //清空表单样式及内容
+    function reset_form(ele) {
+        $(ele)[0].reset();
+        //清空表单样式
+        $(ele).find("*").removeClass("has-error has-success");
+        $(ele).find(".help-block").text("");
+    }
+
     $("#agrsupplier_add_modal_btn").click(function () {
         $("#agrSupplierAddModal").modal({
             backdrop: "static"
@@ -479,7 +488,7 @@
             success: function (result) {
                 //商家信息保存成功
                 //1、关闭模态框
-                $("#agrSupplierModal").modal('hide');
+                $("#agrSupplierAddModal").modal('hide');
                 //2、来到最后一页，显示刚才保存的数据
                 //发送ajax请求显示最后一页数据即可
                 to_page(totalPages);
@@ -548,21 +557,21 @@
     //jquery新版没有live，使用on进行替代
     $(document).on("click", ".edit_btn", function () {
         //查出商家信息，显示商家信息
-        getagrSupplier($(this).attr("edit-id"));
+        getAgrSupplier($(this).attr("edit-id"));
         //把商家的id传递给模态框的更新按钮
         $("#agrsupplier_update_btn").attr("edit-id", $(this).attr("edit-id"));
         $("#agrSupplierUpdateModal").modal({
             backdrop: "static"
         });
 
-        function getagrSupplier(id) {
+        function getAgrSupplier(supplierid) {
             $.ajax({
-                url: "${APP_PATH}/agrsupplier/" + id,
+                url: "${APP_PATH}/agrsupplier/" + supplierid,
                 type: "GET",
                 success: function (result) {
                     // console.log(result);
                     var agrSupplierData = result.extend.agrsupplier;
-                    $("#supplierid_update_input").val(agrSupplierData.supplierid);
+                    $("#supplierid_update_static").text(agrSupplierData.supplierid);
                     $("#suppliername_update_input").val(agrSupplierData.suppliername);
                     $("#supplieraddress_update_input").val(agrSupplierData.supplieraddress);
                     $("#concatperson_update_input").val(agrSupplierData.concatperson);

@@ -44,7 +44,7 @@ public class DealerController {
         return Msg.success();
     }
 
-    //客户信息更新
+    //更新
     @ResponseBody
     @RequestMapping(value = "/dealer/{distributorid}", method = RequestMethod.PUT)
     public Msg updateDealer(Dealer dealer, HttpServletRequest request) {
@@ -79,7 +79,7 @@ public class DealerController {
         return Msg.success();
     }
 
-    //根据id查询客户信息
+    //根据id查询
     @RequestMapping(value = "/dealer/{distributorid}", method = RequestMethod.GET)
     @ResponseBody
     public Msg getDealer(@PathVariable("distributorid") String distributorid) {
@@ -87,7 +87,7 @@ public class DealerController {
         return Msg.success().add("dealer", dealer);
     }
 
-    //查出所有客户信息
+    //查出所有
     @RequestMapping("/dealers")
     @ResponseBody
     public Msg getDealers() {

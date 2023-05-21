@@ -243,4 +243,9 @@
       status = #{status,jdbcType=INTEGER}
     where uid = #{uid,jdbcType=VARCHAR}
   </update>
+  <update id="changeStatus" keyProperty="id" parameterType="com.nsu.entity.UserAccount">
+    update useraccount
+    set status = ABS(status-1)
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
 </mapper>

@@ -49,8 +49,9 @@ public class LandInfoController {
 
     //地块更新
     @ResponseBody
-    @RequestMapping(value = "/landinfo/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/landinfo/{landid}", method = RequestMethod.PUT)
     public Msg updateLandInfo(LandInfo landInfo, HttpServletRequest request) {
+        System.out.println(landInfo.getLandid());
         landInfoServiceImpl.updateLandInfo(landInfo);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
@@ -92,11 +93,11 @@ public class LandInfoController {
     @RequestMapping(value = "/landinfo/{landid}", method = RequestMethod.GET)
     @ResponseBody
     public Msg getLandInfo(@PathVariable("landid") String landid) {
-        LandInfo landInfo = landInfoServiceImpl.getLandInfo(landid);
-        return Msg.success().add("landinfo", landInfo);
+        LandInfo landinfo = landInfoServiceImpl.getLandInfo(landid);
+        return Msg.success().add("landinfo", landinfo);
     }
 
-    //查出所有菜地信息
+    //查出所有信息
     @RequestMapping("/landinfos")
     @ResponseBody
     public Msg getLandInfo() {

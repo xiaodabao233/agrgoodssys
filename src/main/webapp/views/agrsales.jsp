@@ -81,7 +81,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">农产品销售编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="agroutid" class="form-control" id="agroutid_update_input">
+                            <p class="form-control-static" id="agroutid_update_static"></p>
+<%--                            <input type="text" name="agroutid" class="form-control" id="agroutid_update_input">--%>
                         </div>
                     </div>
                     <div class="form-group">
@@ -322,16 +323,16 @@
             var agroutIdTd = $("<td></td>").append(item.agroutid);
             var outNumTd = $("<td></td>").append(item.outnum);
             var distributorIdTd = $("<td></td>").append(item.distributorid);
-            var updateTimeTd = $("<td></td>").append(item.updatetime);
+            var updateTimeTd = getMyDate(item.updatetime);
 
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前id
-            editBtn.attr("edit-id", item.id);
+            editBtn.attr("edit-id", item.agroutid);
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的id
-            delBtn.attr("del-id", item.id);
+            delBtn.attr("del-id", item.agroutid);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
@@ -580,8 +581,8 @@
                 type: "GET",
                 success: function (result) {
                     // console.log(result);
-                    var agrsalesData = result.extend.order;
-                    $("#agroutid_update_input").val(agrsalesData.agroutid);
+                    var agrsalesData = result.extend.agrSales;
+                    $("#agroutid_update_static").text(agrsalesData.agroutid);
                     $("#outnum_update_input").val(agrsalesData.outnum);
                     $("#distributorid_update_input").val(agrsalesData.distributorid);
                 }

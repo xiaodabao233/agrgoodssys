@@ -27,89 +27,127 @@
 </head>
 <body style="background-image:url(../agro/UIpic/managementbackground.jpg);background-repeat:no-repeat;background-attachment:fixed;background-size: 100%">
 <!-- 种植信息添加的模态框 -->
-<div class="modal fade" id="plantAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="seedInfoAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">种植添加</h4>
+                <h4 class="modal-title" id="myModalLabel">添加种苗</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">菜地ID</label>
+                        <label class="col-sm-2 control-label">种苗信息编号</label>
                         <div class="col-sm-4">
-                            <select class="form-control" name="fid" id="fieldIdSelect">
+                            <input type="text" name="seedid" class="form-control" id="seedid_add_input"
+                                   placeholder="seedid">
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">农作物名</label>
+                        <label class="col-sm-2 control-label">种苗名称</label>
                         <div class="col-sm-4">
-                            <select class="form-control" name="cname" id="cropSelect">
-                            </select>
+                            <input type="text" name="seedname" class="form-control" id="seedname_add_input"
+                                   placeholder="seedname">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">数量</label>
+                        <label class="col-sm-2 control-label">农资商编号</label>
                         <div class="col-sm-10">
-                            <input type="number" name="quantity" class="form-control" id="quantity_add_input"
-                                   placeholder="Quantity">
+                            <input type="text" name="supplierid" class="form-control" id="supplierid_add_input"
+                                   placeholder="supplierid">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">库存量</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="storagenum" class="form-control" id="storagenum_add_input"
+                                   placeholder="storagenum">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">入库量</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="innum" class="form-control" id="intnum_add_input"
+                                   placeholder="innum">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">出库量</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="outnum" class="form-control" id="outnum_add_input"
+                                   placeholder="outnum">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="plant_save_btn" style="color: #0f0f0f">保存</button>
+                <button type="button" class="btn btn-primary" id="seedinfo_save_btn" style="color: #0f0f0f">保存</button>
             </div>
         </div>
     </div>
 </div>
 <!-- 种植信息修改的模态框 -->
-<div class="modal fade" id="plantUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="seedInfoUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">种植信息修改</h4>
+                <h4 class="modal-title">种苗信息修改</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">记录号</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static" id="ID_update_static"></p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">菜地ID</label>
+                        <label class="col-sm-2 control-label">种苗信息编号</label>
                         <div class="col-sm-4">
-                            <select class="form-control" name="fid" id="fieldIdSelect_update">
-                            </select>
+                            <p class="form-control-static" id="seedid_update_static"></p>
+<%--                            <input type="text" name="seedid" class="form-control" id="seedid_update_input"--%>
+<%--                                   placeholder="seedid">--%>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">农作物名</label>
+                        <label class="col-sm-2 control-label">种苗名称</label>
                         <div class="col-sm-4">
-                            <select class="form-control" name="cname" id="cropSelect_update">
-                            </select>
+                            <input type="text" name="seedname" class="form-control" id="seedname_update_input"
+                                   placeholder="seedname">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">数量</label>
+                        <label class="col-sm-2 control-label">农资商编号</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="supplierid" class="form-control" id="supplierid_update_input"
+                                   placeholder="supplierid">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">库存量</label>
                         <div class="col-sm-10">
-                            <input type="number" name="quantity" class="form-control" id="quantity_update_input"
-                                   placeholder="Quantity">
+                            <input type="number" name="storagenum" class="form-control" id="storagenum_update_input"
+                                   placeholder="storagenum">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">入库量</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="innum" class="form-control" id="innum_update_input"
+                                   placeholder="innum">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">出库量</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="outnum" class="form-control" id="outnum_update_input"
+                                   placeholder="outnum">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="plant_update_btn" style="color: #0f0f0f">更新</button>
+                <button type="button" class="btn btn-primary" id="seedinfo_update_btn" style="color: #0f0f0f">更新</button>
             </div>
         </div>
     </div>
@@ -218,13 +256,13 @@
             </div>
             <div class="col-md-12" style="background-color:rgba(80,77,77,0.9);height:100%;color:#FFFFFF">
                 <div class="row" style="height:50px">
-                    <div class="col-md-3" style="margin-top:10px;text-align:center;font-size:20px">种植信息管理</div>
+                    <div class="col-md-3" style="margin-top:10px;text-align:center;font-size:20px">种苗信息管理</div>
                     <div class="col-md-4 col-md-offset-5" style="margin-top:10px;text-align:right;font-size:20px">
-                        <button class="btn btn-primary" id="plant_add_modal_btn"
+                        <button class="btn btn-primary" id="seedinfo_add_modal_btn"
                                 style="background-color:transparent; vertical-align:middle"><img
                                 src="../agro/UIpic/plus.png" style="height:15px">&nbsp;&nbsp;添&nbsp;加
                         </button>
-                        <button class="btn btn-danger" id="plant_delete_all_btn"
+                        <button class="btn btn-danger" id="seedinfo_delete_all_btn"
                                 style="background-color:transparent; vertical-align:middle"><img
                                 src="../agro/UIpic/delete.png" style="height:15px">&nbsp;&nbsp;删&nbsp;除
                         </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -233,21 +271,20 @@
                 <div class="col-md-12" style="background-color:rgba(0,0,0,0.7);height:585px;color:#FFFFFF">
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-hover" id="plant_table">
+                            <table class="table table-hover" id="seedInfo_table">
                                 <thead>
                                 <tr style="color: #ffffff">
                                     <th style="text-align:center">
                                         <input type="checkbox" id="check_all"
                                                style="background-color:transparent; border-color:#FFFFFF"/>
                                     </th>
-                                    <th style="text-align:center">记录号</th>
-                                    <th style="text-align:center">菜地ID</th>
-                                    <th style="text-align:center">种植作物名</th>
-                                    <th style="text-align:center">单株利润（元）</th>
-                                    <th style="text-align:center">种植数量（株）</th>
-                                    <th style="text-align:center">合计（元）</th>
-                                    <th style="text-align:center">时长（月）</th>
-                                    <th style="text-align:center">状态</th>
+                                    <th style="text-align:center">种苗信息编号</th>
+                                    <th style="text-align:center">种苗名称</th>
+                                    <th style="text-align:center">农资商编号</th>
+                                    <th style="text-align:center">库存量</th>
+                                    <th style="text-align:center">进库量</th>
+                                    <th style="text-align:center">出库量</th>
+                                    <th style="text-align:center">更新日期</th>
                                     <th style="text-align:center"><img src="../agro/UIpic/tools.png"
                                                                        style="height:15px">&nbsp;&nbsp;操&nbsp;&nbsp;作
                                     </th>
@@ -311,12 +348,12 @@
 
     function to_page(pn) {
         $.ajax({
-            url: "${APP_PATH}/plant-list",
+            url: "${APP_PATH}/seedinfo-list",
             data: "pn=" + pn,
             type: "GET",
             success: function (result) {
                 //1、解析并显示种植信息
-                build_plant_table(result);
+                build_seedinfo_table(result);
                 // console.info(result);
                 //2、解析并显示分页信息
                 build_page_info(result);
@@ -326,42 +363,62 @@
         });
     }
 
-    function build_plant_table(result) {
+    function build_seedinfo_table(result) {
         //清空table表格
-        $("#plant_table tbody").empty();
-        var plant = result.extend.pageInfo.list;
-        $.each(plant, function (index, item) {
+        $("#seedinfo_table tbody").empty();
+        var seedinfo = result.extend.pageInfo.list;
+        $.each(seedinfo, function (index, item) {
             var checkBoxTd = $("<td><input type='checkbox' class='check_item'/></td>");
-            var IdTd = $("<td></td>").append(item.id);
-            var fieldIdTd = $("<td></td>").append(item.fid);
-            var cropsNameTd = $("<td></td>").append(item.cname);
-            var cropsProfitTd = $("<td></td>").append(item.cprofit);
-            var quantityTd = $("<td></td>").append(item.quantity);
-            var totalTd = $("<td></td>").append(item.total);
-            var timeTd = $("<td></td>").append(item.time);
-            var statusTd = $("<td></td>").append(item.status ? "正常" : "异常");
+
+            var seedIdTd = $("<td></td>").append(item.seedid);
+            var seedNameTd = $("<td></td>").append(item.seedname);
+            var supplierIdTd = $("<td></td>").append(item.supplierid);
+            var storageNumTd = $("<td></td>").append(item.storagenum);
+            var inNumTd = $("<td></td>").append(item.innum);
+            var outNumTd = $("<td></td>").append(item.outnum);
+            var updateTimeTd = getMyDate(item.updatetime);
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前id
-            editBtn.attr("edit-id", item.id);
+            editBtn.attr("edit-id", item.seedid);
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的id
-            delBtn.attr("del-id", item.id);
+            delBtn.attr("del-id", item.seedid);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
-                .append(IdTd)
-                .append(fieldIdTd)
-                .append(cropsNameTd)
-                .append(cropsProfitTd)
-                .append(quantityTd)
-                .append(totalTd)
-                .append(timeTd)
-                .append(statusTd)
+                .append(seedIdTd)
+                .append(seedNameTd)
+                .append(supplierIdTd)
+                .append(storageNumTd)
+                .append(inNumTd)
+                .append(outNumTd)
+                .append(updateTimeTd)
                 .append(btnTd)
-                .appendTo("#plant_table tbody");
+                .appendTo("#seedInfo_table tbody");
         });
+    }
+
+    //获得年月日得到日期oTime
+    function getMyDate(str) {
+        var oDate = new Date(str),
+            oYear = oDate.getFullYear(),
+            oMonth = oDate.getMonth() + 1,
+            oDay = oDate.getDate(),
+            oHour = oDate.getHours(),
+            oMin = oDate.getMinutes(),
+            oSen = oDate.getSeconds(),
+            oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay) + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' + getzf(oSen);//最后拼接时间
+        return oTime;
+    };
+
+    //补0操作
+    function getzf(num) {
+        if (parseInt(num) < 10) {
+            num = '0' + num;
+        }
+        return num;
     }
 
     //解析显示分页信息
@@ -441,60 +498,25 @@
         $(ele).find(".help-block").text("");
     }
 
-    $("#plant_add_modal_btn").click(function () {
-        reset_form("#plantAddModal form")
-        getFieldInfo("#fieldIdSelect");
-        getCropsInfo("#cropSelect");
-        $("#plantAddModal").modal({
+    $("#seedinfo_add_modal_btn").click(function () {
+        reset_form("#seedInfoAddModal form")
+        $("#seedInfoAddModal").modal({
             backdrop: "static"
         });
     });
 
-    //查出所有的菜地信息并显示在下拉列表中
-    function getFieldInfo(ele) {
-        //清空之前下拉列表的值
-        $(ele).empty();
-        $.ajax({
-            url: "${APP_PATH}/fields",
-            type: "GET",
-            success: function (result) {
-                // console.info(result);
-                $.each(result.extend.fields, function () {
-                    var optionEle = $("<option></option>").append(this.id);
-                    optionEle.appendTo(ele);
-                });
-            }
-        });
-    }
 
-    //查出所有的农作物信息并显示在下拉列表中
-    function getCropsInfo(ele) {
-        //清空之前下拉列表的值
-        $(ele).empty();
-        $.ajax({
-            url: "${APP_PATH}/crops",
-            type: "GET",
-            success: function (result) {
-                console.info(result);
-                $.each(result.extend.crops, function () {
-                    var optionEle = $("<option></option>").append(this.cropsname);
-                    optionEle.appendTo(ele);
-                });
-            }
-        });
-    }
-
-    $("#plant_save_btn").click(function () {
+    $("#seedinfo_save_btn").click(function () {
         // 1、模态框中填写的表单数据提交给服务器进行保存
         // 2、发送ajax请求保存种植信息
         $.ajax({
-            url: "${APP_PATH}/plant",
+            url: "${APP_PATH}/seedinfo",
             type: "POST",
-            data: $("#plantAddModal form").serialize(),
+            data: $("#seedInfoAddModal form").serialize(),
             success: function (result) {
                 //种植信息保存成功
                 //1、关闭模态框
-                $("#plantAddModal").modal('hide');
+                $("#seedInfoAddModal").modal('hide');
                 //2、来到最后一页，显示刚才保存的数据
                 //发送ajax请求显示最后一页数据即可
                 to_page(totalPages);
@@ -505,11 +527,11 @@
     //单个删除
     $(document).on("click", ".delete_btn", function () {
         //1、弹出是否确认删除对话框
-        var PlantId = $(this).attr("del-id");
+        var seedId = $(this).attr("del-id");
         if (confirm("确认删除吗？")) {
             //确认，发送ajax请求删除即可
             $.ajax({
-                url: "${APP_PATH}/plant/" + PlantId,
+                url: "${APP_PATH}/seedinfo/" + seedId,
                 type: "DELETE",
                 success: function (result) {
                     alert(result.msg);
@@ -536,7 +558,7 @@
     });
 
     //点击全部删除，就批量删除
-    $("#plant_delete_all_btn").click(function () {
+    $("#seedinfo_delete_all_btn").click(function () {
         var del_idstr = "";
         $.each($(".check_item:checked"), function () {
             //组装id字符串
@@ -547,7 +569,7 @@
         if (confirm("确认删除吗？")) {
             //发送ajax请求删除
             $.ajax({
-                url: "${APP_PATH}/plant/" + del_idstr,
+                url: "${APP_PATH}/seedinfo/" + del_idstr,
                 type: "DELETE",
                 success: function (result) {
                     alert(result.msg);
@@ -563,39 +585,41 @@
     //jquery新版没有live，使用on进行替代
     $(document).on("click", ".edit_btn", function () {
         //查出种植信息，显示种植信息
-        getPlant($(this).attr("edit-id"));
+        getSeedInfo($(this).attr("edit-id"));
         //把id传递给模态框的更新按钮
-        $("#plant_update_btn").attr("edit-id", $(this).attr("edit-id"));
-        reset_form("#plantUpdateModal form")
-        getFieldInfo("#fieldIdSelect_update");
-        getCropsInfo("#cropSelect_update");
-        $("#plantUpdateModal").modal({
+        $("#seedinfo_update_btn").attr("edit-id", $(this).attr("edit-id"));
+        reset_form("#seedInfoUpdateModal form")
+        $("#seedInfoUpdateModal").modal({
             backdrop: "static"
         });
 
-        function getPlant(id) {
+        function getSeedInfo(seedid) {
             $.ajax({
-                url: "${APP_PATH}/plant/" + id,
+                url: "${APP_PATH}/seedinfo/" + seedid,
                 type: "GET",
                 success: function (result) {
                     // console.log(result);
-                    var plantData = result.extend.plant;
-                    $("#ID_update_static").text(plantData.id);
-                    $("#quantity_update_input").val(plantData.quantity);
+                    var seedInfoData = result.extend.seedInfo;
+                    $("#seedid_update_static").text(seedInfoData.seedid);
+                    $("#seedname_update_input").val(seedInfoData.seedname);
+                    $("#supplierid_update_input").val(seedInfoData.supplierid);
+                    $("#storagenum_update_input").val(seedInfoData.storagenum);
+                    $("#innum_update_input").val(seedInfoData.innum);
+                    $("#outnum_update_input").val(seedInfoData.outnum);
                 }
             });
         }
 
-        $("#plant_update_btn").click(function () {
+        $("#seedinfo_update_btn").click(function () {
             //发送ajax请求保存更新的种植信息数据
             $.ajax({
-                url: "${APP_PATH}/plant/" + $(this).attr("edit-id"),
+                url: "${APP_PATH}/seedinfo/" + $(this).attr("edit-id"),
                 type: "PUT",
-                data: $("#plantUpdateModal form").serialize(),
+                data: $("#seedInfoUpdateModal form").serialize(),
                 success: function (result) {
                     //alert(result.msg);
                     //1、关闭对话框
-                    $("#plantUpdateModal").modal("hide");
+                    $("#seedInfoUpdateModal").modal("hide");
                     //2、回到本页面
                     to_page(currentPage);
                 }

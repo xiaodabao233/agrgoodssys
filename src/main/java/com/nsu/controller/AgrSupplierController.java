@@ -45,13 +45,21 @@ public class AgrSupplierController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/agrsupplier/{agrsupplierid}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/agrsupplier/{supplierid}", method = RequestMethod.PUT)
     public Msg updateAgrSupplier(AgrSupplier agrSupplier, HttpServletRequest request) {
+        System.out.println(agrSupplier.getSupplierid());
         agrSupplierServiceImpl.updateAgrSupplier(agrSupplier);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
         return Msg.success();
+    }
+
+    @RequestMapping(value = "/agrsupplier/{supplierid}", method = RequestMethod.GET)
+    @ResponseBody
+    public Msg getAgrSupplier(@PathVariable("supplierid") String agrsupplierid) {
+        AgrSupplier agrsupplier = agrSupplierServiceImpl.getAgrSupplier(agrsupplierid);
+        return Msg.success().add("agrsupplier", agrsupplier);
     }
 
     @ResponseBody
@@ -78,10 +86,5 @@ public class AgrSupplierController {
         return Msg.success();
     }
 
-    @RequestMapping(value = "/agrsupplier/{agrsupplierid}", method = RequestMethod.GET)
-    @ResponseBody
-    public Msg getAgrSupplier(@PathVariable("agrsupplierid") String agrsupplierid) {
-        AgrSupplier agrSupplier = agrSupplierServiceImpl.getAgrSupplier(agrsupplierid);
-        return Msg.success().add("agrSupplier", agrSupplier);
-    }
+
 }

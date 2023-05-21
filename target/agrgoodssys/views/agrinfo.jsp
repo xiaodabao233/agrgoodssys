@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-    <title>商品信息管理</title>
+    <title>农产品信息管理</title>
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
@@ -26,90 +26,108 @@
     <script src="../js/sign.js"></script>
 </head>
 <body style="background-image:url(../agro/UIpic/managementbackground.jpg);background-repeat:no-repeat;background-attachment:fixed;background-size: 100%">
-<!-- 商品添加的模态框 -->
-<div class="modal fade" id="itemsAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- 农产品添加的模态框 -->
+<div class="modal fade" id="agrInfoAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">商品添加</h4>
+                <h4 class="modal-title" id="myModalLabel">农产品添加</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">商品名</label>
+                        <label class="col-sm-2 control-label">农产品编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control" id="itemsName_add_input"
-                                   placeholder="Name">
+                            <input type="text" name="agrid" class="form-control" id="agrid_add_input"
+                                   placeholder="agrid">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">数量</label>
+                        <label class="col-sm-2 control-label">农作物编号</label>
                         <div class="col-sm-10">
-                            <input type="number" name="quantity" class="form-control" id="itemsQuantity_add_input"
-                                   placeholder="Quantity">
+                            <input type="text" name="cropid" class="form-control" id="cropid_add_input"
+                                   placeholder="cropid">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">单价</label>
+                        <label class="col-sm-2 control-label">库存量</label>
                         <div class="col-sm-10">
-                            <input type="number" name="unitPrice" class="form-control" id="unitPrice_add_input"
-                                   placeholder="Price">
+                            <input type="number" name="storagenum" class="form-control" id="storagenum_add_input"
+                                   placeholder="storagenum">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">进库量</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="innum" class="form-control" id="innum_add_input"
+                                   placeholder="innum">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">销售量</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="outnum" class="form-control" id="outnum_add_input"
+                                   placeholder="outnum">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="items_save_btn" style="color: #0f0f0f">保存</button>
+                <button type="button" class="btn btn-primary" id="agrinfo_save_btn" style="color: #0f0f0f">保存</button>
             </div>
         </div>
     </div>
 </div>
-<!-- 商品修改的模态框 -->
-<div class="modal fade" id="itemsUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- 农产品修改的模态框 -->
+<div class="modal fade" id="agrInfoUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">商品修改</h4>
+                <h4 class="modal-title">农产品信息修改</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">ID</label>
+                        <label class="col-sm-2 control-label">农产品编号</label>
                         <div class="col-sm-10">
-                            <p class="form-control-static" id="itemsID_update_static"></p>
+                            <p class="form-control-static" id="agrid_update_static"></p>
+<%--                            <input type="text" name="agrid" class="form-control" id="agrid_update_input">--%>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">商品名</label>
+                        <label class="col-sm-2 control-label">农作物编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control" id="itemsName_update_input">
-                            <span class="help-block"></span>
+                            <input type="text" name="cropid" class="form-control" id="cropid_update_input">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">数量</label>
+                        <label class="col-sm-2 control-label">库存量</label>
                         <div class="col-sm-10">
-                            <input type="number" name="quantity" class="form-control" id="quantity_update_input">
-                            <span class="help-block"></span>
+                            <input type="number" name="storagenum" class="form-control" id="storagenum_update_input">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">单价</label>
+                        <label class="col-sm-2 control-label">进库量</label>
                         <div class="col-sm-10">
-                            <input type="number" name="unitPrice" class="form-control" id="unitPrice_update_input">
-                            <span class="help-block"></span>
+                            <input type="number" name="innum" class="form-control" id="innum_update_input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">销售量</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="outnum" class="form-control" id="outnum_update_input">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="items_update_btn" style="color: #0f0f0f">更新</button>
+                <button type="button" class="btn btn-primary" id="agrinfo_update_btn" style="color: #0f0f0f">更新</button>
             </div>
         </div>
     </div>
@@ -218,13 +236,13 @@
             </div>
             <div class="col-md-12" style="background-color:rgba(80,77,77,0.9);height:100%;color:#FFFFFF">
                 <div class="row" style="height:50px">
-                    <div class="col-md-3" style="margin-top:10px;text-align:center;font-size:20px">商品信息管理</div>
+                    <div class="col-md-3" style="margin-top:10px;text-align:center;font-size:20px">农产品信息管理</div>
                     <div class="col-md-4 col-md-offset-5" style="margin-top:10px;text-align:right;font-size:20px">
-                        <button class="btn btn-primary" id="items_add_modal_btn"
+                        <button class="btn btn-primary" id="agrinfo_add_modal_btn"
                                 style="background-color:transparent; vertical-align:middle"><img
                                 src="../agro/UIpic/plus.png" style="height:15px">&nbsp;&nbsp;添&nbsp;加
                         </button>
-                        <button class="btn btn-danger" id="items_delete_all_btn"
+                        <button class="btn btn-danger" id="agrinfo_delete_all_btn"
                                 style="background-color:transparent; vertical-align:middle"><img
                                 src="../agro/UIpic/delete.png" style="height:15px">&nbsp;&nbsp;删&nbsp;除
                         </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -233,19 +251,18 @@
                 <div class="col-md-12" style="background-color:rgba(0,0,0,0.7);height:585px;color:#FFFFFF">
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-hover" id="items_table">
+                            <table class="table table-hover" id="agrinfo_table">
                                 <thead>
                                 <tr style="color:#ffffff">
                                     <th style="text-align:center">
                                         <input type="checkbox" id="check_all"
                                                style="background-color:transparent; border-color:#FFFFFF"/>
                                     </th>
-                                    <th style="text-align:center">#ID</th>
-                                    <th style="text-align:center">商品名</th>
-                                    <th style="text-align:center">数量</th>
-                                    <th style="text-align:center">单价（元）</th>
-                                    <th style="text-align:center">合计（元）</th>
-                                    <th style="text-align:center">状态</th>
+                                    <th style="text-align:center">#农产品编号</th>
+                                    <th style="text-align:center">农作物编号</th>
+                                    <th style="text-align:center">库存量</th>
+                                    <th style="text-align:center">进库量</th>
+                                    <th style="text-align:center">销售量</th>
                                     <th style="text-align:center"><img src="../agro/UIpic/tools.png"
                                                                        style="height:15px">&nbsp;&nbsp;操&nbsp;&nbsp;作
                                     </th>
@@ -309,12 +326,12 @@
 
     function to_page(pn) {
         $.ajax({
-            url: "${APP_PATH}/items-list",
+            url: "${APP_PATH}/agrinfo-list",
             data: "pn=" + pn,
             type: "GET",
             success: function (result) {
                 //1、解析并显示商品数据
-                build_items_table(result);
+                build_agrinfo_table(result);
                 //2、解析并显示分页信息
                 build_page_info(result);
                 //3、解析显示分页条数据
@@ -323,37 +340,35 @@
         });
     }
 
-    function build_items_table(result) {
+    function build_agrinfo_table(result) {
         //清空table表格
-        $("#items_table tbody").empty();
-        var items = result.extend.pageInfo.list;
-        $.each(items, function (index, item) {
+        $("#agrinfo_table tbody").empty();
+        var agrinfo = result.extend.pageInfo.list;
+        $.each(agrinfo, function (index, item) {
             var checkBoxTd = $("<td><input type='checkbox' class='check_item'/></td>");
-            var itemsIdTd = $("<td></td>").append(item.id);
-            var itemsNameTd = $("<td></td>").append(item.name);
-            var quantityTd = $("<td></td>").append(item.quantity);
-            var unitPriceTd = $("<td></td>").append(item.unitPrice);
-            var totalTd = $("<td></td>").append(item.unitPrice * item.quantity);
-            var statusTd = $("<td></td>").append(item.status ? "正常" : "异常");
+            var agrIdTd = $("<td></td>").append(item.agrid);
+            var cropIdTd = $("<td></td>").append(item.cropid);
+            var storageNumTd = $("<td></td>").append(item.storagenum);
+            var inNumTd = $("<td></td>").append(item.innum);
+            var outNumTd = $("<td></td>").append(item.outnum);
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前商品id
-            editBtn.attr("edit-id", item.id);
+            editBtn.attr("edit-id", item.agrid);
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的商品id
-            delBtn.attr("del-id", item.id);
+            delBtn.attr("del-id", item.agrid);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
-                .append(itemsIdTd)
-                .append(itemsNameTd)
-                .append(quantityTd)
-                .append(unitPriceTd)
-                .append(totalTd)
-                .append(statusTd)
+                .append(agrIdTd)
+                .append(cropIdTd)
+                .append(storageNumTd)
+                .append(inNumTd)
+                .append(outNumTd)
                 .append(btnTd)
-                .appendTo("#items_table tbody");
+                .appendTo("#agrinfo_table tbody");
         });
     }
 
@@ -426,23 +441,23 @@
         navEle.appendTo("#page_nav_area");
     }
 
-    $("#items_add_modal_btn").click(function () {
-        $("#itemsAddModal").modal({
+    $("#agrinfo_add_modal_btn").click(function () {
+        $("#agrInfoAddModal").modal({
             backdrop: "static"
         });
     });
 
-    $("#items_save_btn").click(function () {
+    $("#agrinfo_save_btn").click(function () {
         // 1、模态框中填写的表单数据提交给服务器进行保存
         // 2、发送ajax请求保存商品信息
         $.ajax({
-            url: "${APP_PATH}/items",
+            url: "${APP_PATH}/agrinfo",
             type: "POST",
-            data: $("#itemsAddModal form").serialize(),
+            data: $("#agrInfoAddModal form").serialize(),
             success: function (result) {
                 //商品信息保存成功
                 //1、关闭模态框
-                $("#itemsAddModal").modal('hide');
+                $("#agrInfoAddModal").modal('hide');
                 //2、来到最后一页，显示刚才保存的数据
                 //发送ajax请求显示最后一页数据即可
                 to_page(totalPages);
@@ -453,11 +468,11 @@
     //单个删除
     $(document).on("click", ".delete_btn", function () {
         //1、弹出是否确认删除对话框
-        var itemsId = $(this).attr("del-id");
+        var agrinfoId = $(this).attr("del-id");
         if (confirm("确认删除吗？")) {
             //确认，发送ajax请求删除即可
             $.ajax({
-                url: "${APP_PATH}/items/" + itemsId,
+                url: "${APP_PATH}/agrinfo/" + agrinfoId,
                 type: "DELETE",
                 success: function (result) {
                     alert(result.msg);
@@ -484,7 +499,7 @@
     });
 
     //点击全部删除，就批量删除
-    $("#items_delete_all_btn").click(function () {
+    $("#agrinfo_delete_all_btn").click(function () {
         //
         var del_idstr = "";
         $.each($(".check_item:checked"), function () {
@@ -496,7 +511,7 @@
         if (confirm("确认删除吗？")) {
             //发送ajax请求删除
             $.ajax({
-                url: "${APP_PATH}/items/" + del_idstr,
+                url: "${APP_PATH}/agrinfo/" + del_idstr,
                 type: "DELETE",
                 success: function (result) {
                     alert(result.msg);
@@ -512,38 +527,39 @@
     //jquery新版没有live，使用on进行替代
     $(document).on("click", ".edit_btn", function () {
         //查出菜地信息，显示菜地信息
-        getItems($(this).attr("edit-id"));
+        getAgrInfo($(this).attr("edit-id"));
         //把菜地的id传递给模态框的更新按钮
-        $("#items_update_btn").attr("edit-id", $(this).attr("edit-id"));
-        $("#itemsUpdateModal").modal({
+        $("#agrinfo_update_btn").attr("edit-id", $(this).attr("edit-id"));
+        $("#agrInfoUpdateModal").modal({
             backdrop: "static"
         });
 
-        function getItems(id) {
+        function getAgrInfo(id) {
             $.ajax({
-                url: "${APP_PATH}/items/" + id,
+                url: "${APP_PATH}/agrinfo/" + id,
                 type: "GET",
                 success: function (result) {
                     // console.log(result);
-                    var itemsData = result.extend.items;
-                    $("#itemsID_update_static").text(itemsData.id);
-                    $("#itemsName_update_input").val(itemsData.name);
-                    $("#quantity_update_input").val(itemsData.quantity);
-                    $("#unitPrice_update_input").val(itemsData.unitPrice);
+                    var agrinfoData = result.extend.agrInfo;
+                    $("#agrid_update_static").text(agrinfoData.agrid);
+                    $("#cropid_update_input").val(agrinfoData.cropid);
+                    $("#storagenum_update_input").val(agrinfoData.storagenum);
+                    $("#innum_update_input").val(agrinfoData.innum);
+                    $("#outnum_update_input").val(agrinfoData.outnum);
                 }
             });
         }
 
-        $("#items_update_btn").click(function () {
+        $("#agrinfo_update_btn").click(function () {
             //发送ajax请求保存更新的菜地数据
             $.ajax({
-                url: "${APP_PATH}/items/" + $(this).attr("edit-id"),
+                url: "${APP_PATH}/agrinfo/" + $(this).attr("edit-id"),
                 type: "PUT",
-                data: $("#itemsUpdateModal form").serialize(),
+                data: $("#agrInfoUpdateModal form").serialize(),
                 success: function (result) {
                     //alert(result.msg);
                     //1、关闭对话框
-                    $("#itemsUpdateModal").modal("hide");
+                    $("#agrInfoUpdateModal").modal("hide");
                     //2、回到本页面
                     to_page(currentPage);
                 }

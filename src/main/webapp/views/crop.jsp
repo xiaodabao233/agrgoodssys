@@ -86,7 +86,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">农作物ID</label>
                         <div class="col-sm-10">
-                            <input type="text" name="cropid" class="form-control" id="cropId_update_input">
+                            <p class="form-control-static" id="cropId_update_static"></p>
+<%--                            <input type="text" name="cropid" class="form-control" id="cropId_update_input">--%>
                         </div>
                     </div>
                     <div class="form-group">
@@ -236,11 +237,11 @@
                                         <input type="checkbox" id="check_all"
                                                style="background-color:transparent; border-color:#FFFFFF"/>
                                     </th>
-                                    <th style="text-align:center">#ID</th>
-                                    <th style="text-align:center">所属地块</th>
-                                    <th style="text-align:center">所属种苗</th>
-                                    <th style="text-align:center">更新时间</th>
-                                    <th style="text-align:center"><img src="../agro/UIpic/tools.png"
+                                    <th style="text-align: center">#ID</th>
+                                    <th style="text-align: center">所属地块</th>
+                                    <th style="text-align: center">所属种苗</th>
+                                    <th style="text-align: center">更新时间</th>
+                                    <th style="text-align: center"><img src="../agro/UIpic/tools.png"
                                                                        style="height:15px">&nbsp;&nbsp;操&nbsp;&nbsp;作
                                     </th>
                                 </tr>
@@ -292,10 +293,6 @@
         </div>
     </div>
 </div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<%--<script src="js/jquery-1.11.2.min.js"></script>--%>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<%--<script src="js/bootstrap.js"></script>--%>
 <script type="text/javascript">
 
     var totalPages, currentPage;
@@ -330,15 +327,15 @@
             var cropIdTd = $("<td></td>").append(item.cropid);
             var landIdTd = $("<td></td>").append(item.landid);
             var seedIdTd = $("<td></td>").append(item.seedid);
-            var updateTimeTd = $("<td></td>").append(item.updatetime);
+            var updateTimeTd = getMyDate(item.updatetime);
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前农作物id
-            editBtn.attr("edit-id", item.id);
+            editBtn.attr("edit-id", item.cropid);
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的农作物id
-            delBtn.attr("del-id", item.id);
+            delBtn.attr("del-id", item.cropid);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
@@ -349,6 +346,27 @@
                 .append(btnTd)
                 .appendTo("#crop_table tbody");
         });
+    }
+
+    //获得年月日      得到日期oTime
+    function getMyDate(str) {
+        var oDate = new Date(str),
+            oYear = oDate.getFullYear(),
+            oMonth = oDate.getMonth() + 1,
+            oDay = oDate.getDate(),
+            oHour = oDate.getHours(),
+            oMin = oDate.getMinutes(),
+            oSen = oDate.getSeconds(),
+            oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay) + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' + getzf(oSen);//最后拼接时间
+        return oTime;
+    };
+
+    //补0操作
+    function getzf(num) {
+        if (parseInt(num) < 10) {
+            num = '0' + num;
+        }
+        return num;
     }
 
     //解析显示分页信息
@@ -519,7 +537,7 @@
                 success: function (result) {
                     // console.log(result);
                     var cropData = result.extend.crop;
-                    $("#cropId_update_input").val(cropData.cropid);
+                    $("#cropId_update_static").text(cropData.cropid);
                     $("#landId_update_input").val(cropData.landid);
                     $("#seedInfoId_update_input").val(cropData.seedid);
                 }

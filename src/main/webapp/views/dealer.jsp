@@ -96,8 +96,9 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">经销商编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="distributorid" class="form-control" id="distributorid_update_input"
-                                   placeholder="要修改的ID号">
+                            <p class="form-control-static" id="distributorid_update_static"></p>
+<%--                            <input type="text" name="distributorid" class="form-control" id="distributorid_update_input"--%>
+<%--                                   placeholder="要修改的ID号">--%>
                         </div>
                     </div>
                     <div class="form-group">
@@ -260,10 +261,11 @@
                                         <input type="checkbox" id="check_all"
                                                style="background-color:transparent; border-color:#FFFFFF"/>
                                     </th>
-                                    <th style="text-align:center">#ID</th>
-                                    <th style="text-align:center">客户名</th>
-                                    <th style="text-align:center">手机号</th>
-                                    <th style="text-align:center">状态</th>
+                                    <th style="text-align:center">#经销商编号</th>
+                                    <th style="text-align:center">经销商名称</th>
+                                    <th style="text-align:center">地址</th>
+                                    <th style="text-align:center">联系人</th>
+                                    <th style="text-align:center">联系方式</th>
                                     <th style="text-align:center"><img src="../agro/UIpic/tools.png"
                                                                        style="height:15px">&nbsp;&nbsp;操&nbsp;&nbsp;作
                                     </th>
@@ -357,11 +359,11 @@
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前菜地id
-            editBtn.attr("edit-id", item.id);
+            editBtn.attr("edit-id", item.distributorid);
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的菜地id
-            delBtn.attr("del-id", item.id);
+            delBtn.attr("del-id", item.distributorid);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
@@ -544,7 +546,7 @@
                 success: function (result) {
                     // console.log(result);
                     var dealerData = result.extend.dealer;
-                    $("#distributorid_update_input").val(dealerData.distributorid);
+                    $("#distributorid_update_static").text(dealerData.distributorid);
                     $("#distributorname_update_input").val(dealerData.distributorname);
                     $("#distributoraddress_update_input").val(dealerData.distributoraddress);
                     $("#concatperson_update_input").val(dealerData.concatperson);

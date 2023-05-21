@@ -27,7 +27,7 @@
 </head>
 <body style="background-image:url(../agro/UIpic/managementbackground.jpg);background-repeat:no-repeat;background-attachment:fixed;background-size: 100%">
 <!-- 农资商添加的模态框 -->
-<div class="modal fade" id="agrSupplierModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="agrSupplierAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -39,35 +39,43 @@
                 <%--表单--%>
                 <form class="form-horizontal">
                     <div class="form-group">
+                        <label class="col-sm-2 control-label">农资商编号</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="supplierid" class="form-control"
+                                   id="supplierid_add_input"
+                                   placeholder="supplierid">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-2 control-label">农资商名称</label>
                         <div class="col-sm-10">
-                            <input type="text" name="supplierName" class="form-control"
-                                   id="SupplierName_add_input"
-                                   placeholder="SupplierName">
+                            <input type="text" name="suppliername" class="form-control"
+                                   id="suppliername_add_input"
+                                   placeholder="suppliername">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">农资商地址</label>
                         <div class="col-sm-10">
-                            <input type="text" name="supplierAddress" class="form-control"
-                                   id="SupplierAddress_add_input"
-                                   placeholder="SupplierAddress">
+                            <input type="text" name="supplieraddress" class="form-control"
+                                   id="supplieraddress_add_input"
+                                   placeholder="supplieraddress">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">联系人</label>
                         <div class="col-sm-10">
-                            <input type="text" name="conCatPerson" class="form-control"
-                                   id="ConCatPerson_add_input"
-                                   placeholder="ConCatPerson">
+                            <input type="text" name="concatperson" class="form-control"
+                                   id="concatperson_add_input"
+                                   placeholder="concatperson">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">联系方式</label>
                         <div class="col-sm-10">
-                            <input type="text" name="conCatMethod" class="form-control"
-                                   id="ConCatMethod_add_input"
-                                   placeholder="ConCatMethod">
+                            <input type="text" name="concatmethod" class="form-control"
+                                   id="concatmethod_add_input"
+                                   placeholder="concatmethod">
                         </div>
                     </div>
 
@@ -76,7 +84,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="seller_save_btn" style="color: #0f0f0f">保存</button>
+                <button type="button" class="btn btn-primary" id="agrsupplier_save_btn" style="color: #0f0f0f">保存</button>
             </div>
         </div>
     </div>
@@ -93,40 +101,43 @@
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">ID</label>
+                        <label class="col-sm-2 control-label">农资商编号</label>
                         <div class="col-sm-10">
-                            <p class="form-control-static" id="supplierId_update_static"></p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">名称</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="supplierName" class="form-control"
-                                   id="supplierName_update_input">
+                            <p class="form-control-static" id="supplierid_update_static"></p>
+<%--                            <input type="text" name="supplierid" class="form-control"--%>
+<%--                                   id="supplierid_update_input">--%>
                             <span class="help-block"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">地址</label>
+                        <label class="col-sm-2 control-label">农资商名称</label>
                         <div class="col-sm-10">
-                            <input type="text" name="supplierAddress" class="form-control"
-                                   id="supplierAddress_update_input">
+                            <input type="text" name="suppliername" class="form-control"
+                                   id="suppliername_update_input">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">农资商地址</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="supplieraddress" class="form-control"
+                                   id="supplieraddress_update_input">
                             <span class="help-block"></span>
                         </div>
                     </div>
                     <div class="form-group">
                     <label class="col-sm-2 control-label">联系人</label>
                     <div class="col-sm-10">
-                        <input type="text" name="conCatPerson" class="form-control"
-                               id="conCatPerson_update_input">
+                        <input type="text" name="concatperson" class="form-control"
+                               id="concatperson_update_input">
                         <span class="help-block"></span>
                     </div>
                 </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">联系方式</label>
                         <div class="col-sm-10">
-                            <input type="text" name="conCatMethod" class="form-control"
-                                   id="conCatMethod_update_input">
+                            <input type="text" name="concatmethod" class="form-control"
+                                   id="concatmethod_update_input">
                             <span class="help-block"></span>
                         </div>
                     </div>
@@ -134,7 +145,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="agrSupplier_update_btn" style="color: #0f0f0f">更新</button>
+                <button type="button" class="btn btn-primary" id="agrsupplier_update_btn" style="color: #0f0f0f">更新</button>
             </div>
         </div>
     </div>
@@ -245,11 +256,11 @@
                 <div class="row" style="height:50px">
                     <div class="col-md-3" style="margin-top:10px;text-align:center;font-size:20px">农资商信息管理</div>
                     <div class="col-md-4 col-md-offset-5" style="margin-top:10px;text-align:right;font-size:20px">
-                        <button class="btn btn-primary" id="seller_add_modal_btn"
+                        <button class="btn btn-primary" id="agrsupplier_add_modal_btn"
                                 style="background-color:transparent; vertical-align:middle"><img
                                 src="../agro/UIpic/plus.png" style="height:15px">&nbsp;&nbsp;添&nbsp;加
                         </button>
-                        <button class="btn btn-danger" id="seller_delete_all_btn"
+                        <button class="btn btn-danger" id="agrsupplier_delete_all_btn"
                                 style="background-color:transparent; vertical-align:middle"><img
                                 src="../agro/UIpic/delete.png" style="height:15px">&nbsp;&nbsp;删&nbsp;除
                         </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -266,8 +277,8 @@
                                                style="background-color:transparent; border-color:#FFFFFF"/>
                                     </th>
                                     <th style="text-align:center">#ID</th>
-                                    <th style="text-align:center">名称</th>
-                                    <th style="text-align:center">地址</th>
+                                    <th style="text-align:center">农资商名称</th>
+                                    <th style="text-align:center">农资商地址</th>
                                     <th style="text-align:center">联系人</th>
                                     <th style="text-align:center">联系方式</th>
                                     <th style="text-align:center"><img src="../agro/UIpic/tools.png"
@@ -342,7 +353,7 @@
             type: "GET",
             success: function (result) {
                 //1、解析并显示商家数据
-                build_seller_table(result);
+                build_agrsupplier_table(result);
                 //2、解析并显示分页信息
                 build_page_info(result);
                 //3、解析显示分页条数据
@@ -351,34 +362,34 @@
         });
     }
 
-    function build_seller_table(result) {
+    function build_agrsupplier_table(result) {
         //清空table表格
         $("#agrsupplier_table tbody").empty();
         var agrsupplier = result.extend.pageInfo.list;
         $.each(agrsupplier, function (index, item) {
             var checkBoxTd = $("<td><input type='checkbox' class='check_item'/></td>");
-            var supplierIdTd = $("<td></td>").append(item.id);
-            var supplierNameTd = $("<td></td>").append(item.sellerName);
-            var supplierAddressTd = $("<td></td>").append(item.sellerAdd);
-            var conCatPersonTd = $("<td></td>").append(item.sellerCompanyName);
-            var conCatMethodTd = $("<td></td>").append(item.sellerPhone);
+            var supplierIdTd = $("<td></td>").append(item.supplierid);
+            var supplierNameTd = $("<td></td>").append(item.suppliername);
+            var supplierAddressTd = $("<td></td>").append(item.supplieraddress);
+            var conCatPersonTd = $("<td></td>").append(item.concatperson);
+            var conCatMethodTd = $("<td></td>").append(item.concatmethod);
 
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前商家id
-            editBtn.attr("edit-id", item.id);
+            editBtn.attr("edit-id", item.supplierid);
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的商家id
-            delBtn.attr("del-id", item.id);
+            delBtn.attr("del-id", item.supplierid);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
                 .append(supplierIdTd)
                 .append(supplierNameTd)
-                .append(conCatMethodTd)
-                .append(conCatPersonTd)
                 .append(supplierAddressTd)
+                .append(conCatPersonTd)
+                .append(conCatMethodTd)
                 .append(btnTd)
                 .appendTo("#agrsupplier_table tbody");
         });
@@ -453,23 +464,31 @@
         navEle.appendTo("#page_nav_area");
     }
 
-    $("#agrSupplier_add_modal_btn").click(function () {
-        $("#sellerAddModal").modal({
+    //清空表单样式及内容
+    function reset_form(ele) {
+        $(ele)[0].reset();
+        //清空表单样式
+        $(ele).find("*").removeClass("has-error has-success");
+        $(ele).find(".help-block").text("");
+    }
+
+    $("#agrsupplier_add_modal_btn").click(function () {
+        $("#agrSupplierAddModal").modal({
             backdrop: "static"
         });
     });
 
-    $("#agrSupplier_save_btn").click(function () {
+    $("#agrsupplier_save_btn").click(function () {
         // 1、模态框中填写的表单数据提交给服务器进行保存
         // 2、发送ajax请求保存商家信息
         $.ajax({
             url: "${APP_PATH}/agrsupplier",
             type: "POST",
-            data: $("#sellerAddModal form").serialize(),
+            data: $("#agrSupplierAddModal form").serialize(),
             success: function (result) {
                 //商家信息保存成功
                 //1、关闭模态框
-                $("#agrSupplierModal").modal('hide');
+                $("#agrSupplierAddModal").modal('hide');
                 //2、来到最后一页，显示刚才保存的数据
                 //发送ajax请求显示最后一页数据即可
                 to_page(totalPages);
@@ -480,11 +499,11 @@
     //单个删除
     $(document).on("click", ".delete_btn", function () {
         //1、弹出是否确认删除对话框
-        var sellerId = $(this).attr("del-id");
+        var agrsupplierId = $(this).attr("del-id");
         if (confirm("确认删除吗？")) {
             //确认，发送ajax请求删除即可
             $.ajax({
-                url: "${APP_PATH}/agrsupplier/" + sellerId,
+                url: "${APP_PATH}/agrsupplier/" + agrsupplierId,
                 type: "DELETE",
                 success: function (result) {
                     alert(result.msg);
@@ -538,30 +557,30 @@
     //jquery新版没有live，使用on进行替代
     $(document).on("click", ".edit_btn", function () {
         //查出商家信息，显示商家信息
-        getSeller($(this).attr("edit-id"));
+        getAgrSupplier($(this).attr("edit-id"));
         //把商家的id传递给模态框的更新按钮
-        $("#agrSupplier_update_btn").attr("edit-id", $(this).attr("edit-id"));
+        $("#agrsupplier_update_btn").attr("edit-id", $(this).attr("edit-id"));
         $("#agrSupplierUpdateModal").modal({
             backdrop: "static"
         });
 
-        function getSeller(id) {
+        function getAgrSupplier(supplierid) {
             $.ajax({
-                url: "${APP_PATH}/agrsupplier/" + id,
+                url: "${APP_PATH}/agrsupplier/" + supplierid,
                 type: "GET",
                 success: function (result) {
                     // console.log(result);
                     var agrSupplierData = result.extend.agrsupplier;
-                    $("#supplierID_update_static").text(agrSupplierData.id);
-                    $("#supplierName_update_input").val(agrSupplierData.supplierName);
-                    $("#supplierAddress_update_input").val(agrSupplierData.supplierName);
-                    $("#conCatPerson_update_input").val(agrSupplierData.conCatPerson);
-                    $("#conCatMethod_update_input").val(agrSupplierData.conCatMethod);
+                    $("#supplierid_update_static").text(agrSupplierData.supplierid);
+                    $("#suppliername_update_input").val(agrSupplierData.suppliername);
+                    $("#supplieraddress_update_input").val(agrSupplierData.supplieraddress);
+                    $("#concatperson_update_input").val(agrSupplierData.concatperson);
+                    $("#concatmethod_update_input").val(agrSupplierData.concatmethod);
                 }
             });
         }
 
-        $("#agrSupplier_update_btn").click(function () {
+        $("#agrsupplier_update_btn").click(function () {
             //发送ajax请求保存更新的商家数据
             $.ajax({
                 url: "${APP_PATH}/agrsupplier/" + $(this).attr("edit-id"),

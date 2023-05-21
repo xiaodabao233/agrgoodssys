@@ -82,10 +82,10 @@ public class CropController {
     public Msg getCrop(@PathVariable("cropid") String cropid) {
 
         Crop crop = cropServiceImpl.getCrops(cropid);
-        return Msg.success().add("crops", crop);
+        return Msg.success().add("crop", crop);
     }
 
-    //查出所有农作物信息
+    //查出所有
     @RequestMapping(value = "/crops", method = RequestMethod.GET)
     @ResponseBody
     public Msg getCrops() {

@@ -95,7 +95,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">农产品编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="agrid" class="form-control" id="agrid_update_input">
+                            <p class="form-control-static" id="agrid_update_static"></p>
+<%--                            <input type="text" name="agrid" class="form-control" id="agrid_update_input">--%>
                         </div>
                     </div>
                     <div class="form-group">
@@ -353,11 +354,11 @@
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前商品id
-            editBtn.attr("edit-id", item.id);
+            editBtn.attr("edit-id", item.agrid);
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的商品id
-            delBtn.attr("del-id", item.id);
+            delBtn.attr("del-id", item.agrid);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
@@ -539,8 +540,8 @@
                 type: "GET",
                 success: function (result) {
                     // console.log(result);
-                    var agrinfoData = result.extend.agrinfo;
-                    $("#agrid_update_input").text(agrinfoData.agrid);
+                    var agrinfoData = result.extend.agrInfo;
+                    $("#agrid_update_static").text(agrinfoData.agrid);
                     $("#cropid_update_input").val(agrinfoData.cropid);
                     $("#storagenum_update_input").val(agrinfoData.storagenum);
                     $("#innum_update_input").val(agrinfoData.innum);

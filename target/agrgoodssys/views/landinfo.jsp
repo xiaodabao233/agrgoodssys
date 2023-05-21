@@ -38,39 +38,74 @@
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">地块id</label>
+                        <label class="col-sm-2 control-label">地块ID</label>
                         <div class="col-sm-10">
-                            <input type="text" name="landId" class="form-control" id="landId_add_input"
+
+                            <input type="text" name="landid" class="form-control" id="landId_add_input"
                                    placeholder="landid">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">园区id</label>
+                        <label class="col-sm-2 control-label">园区ID</label>
                         <div class="col-sm-10">
-                            <input type="text" name="parkId" class="form-control" id="parkId_add_input"
+                            <input type="text" name="parkid" class="form-control" id="parkId_add_input"
                                    placeholder="parkid">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">地块编号</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="landnum" class="form-control" id="landNum_add_input"
+                                   placeholder="landnum">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">地块名</label>
                         <div class="col-sm-10">
-                            <input type="text" name="landName" class="form-control" id="landName_add_input"
+                            <input type="text" name="landname" class="form-control" id="landName_add_input"
                                    placeholder="landname">
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">东至</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="lande" class="form-control" id="landE_add_input"
+                                   placeholder="lande">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">西至</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="landw" class="form-control" id="landW_add_input"
+                                   placeholder="landw">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">南至</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="lands" class="form-control" id="landS_add_input"
+                                   placeholder="lands">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">北至</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="landn" class="form-control" id="landN_add_input"
+                                   placeholder="landn">
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">地块面积</label>
                         <div class="col-sm-10">
-                            <input type="number" name="size" class="form-control" id="landsize_add_input"
-                                   placeholder="Area">
+                            <input type="number" name="landsize" class="form-control" id="landSize_add_input">
+                            <span class="help-block"></span>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="field_save_btn" style="color: #0f0f0f">保存</button>
+                <button type="button" class="btn btn-primary" id="landInfo_save_btn" style="color: #0f0f0f">保存</button>
             </div>
         </div>
     </div>
@@ -87,29 +122,66 @@
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">ID</label>
+                        <label class="col-sm-2 control-label">地块ID</label>
                         <div class="col-sm-10">
                             <p class="form-control-static" id="landId_update_static"></p>
+<%--                            <input type="text" name="landid" class="form-control" id="landId_update_input"--%>
+<%--                                   placeholder="你要修改的地块id">--%>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">园区id</label>
                         <div class="col-sm-10">
-                            <input type="text" name="parkId" class="form-control" id="parkId_update_input"
+                            <input type="text" name="parkid" class="form-control" id="parkId_update_input"
                                    placeholder="parkid">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">地块编号</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="landnum" class="form-control" id="landNum_update_input"
+                                   placeholder="landnum">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">地块名</label>
                         <div class="col-sm-10">
-                            <input type="text" name="landName" class="form-control" id="landName_update_input"
+                            <input type="text" name="landname" class="form-control" id="landName_update_input"
                                    placeholder="landname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">东至</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="lande" class="form-control" id="landE_update_input"
+                                   placeholder="lande">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">西至</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="landw" class="form-control" id="landW_update_input"
+                                   placeholder="landw">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">南至</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="lands" class="form-control" id="landS_update_input"
+                                   placeholder="lands">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">北至</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="landn" class="form-control" id="landN_update_input"
+                                   placeholder="landn">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">地块面积</label>
                         <div class="col-sm-10">
-                            <input type="number" name="landSize" class="form-control" id="landSize_update_input">
+                            <input type="number" name="landsize" class="form-control" id="landSize_update_input">
                             <span class="help-block"></span>
                         </div>
                     </div>
@@ -117,7 +189,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="field_update_btn" style="color: #0f0f0f">更新</button>
+                <button type="button" class="btn btn-primary" id="landInfo_update_btn" style="color: #0f0f0f">更新
+                </button>
             </div>
         </div>
     </div>
@@ -228,11 +301,11 @@
                 <div class="row" style="height:50px">
                     <div class="col-md-3" style="margin-top:10px;text-align:center;font-size:20px">地块信息管理</div>
                     <div class="col-md-4 col-md-offset-5" style="margin-top:10px;text-align:right;font-size:20px">
-                        <button class="btn btn-primary" id="field_add_modal_btn"
+                        <button class="btn btn-primary" id="landInfo_add_modal_btn"
                                 style="background-color:transparent; vertical-align:middle"><img
                                 src="../agro/UIpic/plus.png" style="height:15px">&nbsp;&nbsp;添&nbsp;加
                         </button>
-                        <button class="btn btn-danger" id="field_delete_all_btn"
+                        <button class="btn btn-danger" id="landInfo_delete_all_btn"
                                 style="background-color:transparent; vertical-align:middle"><img
                                 src="../agro/UIpic/delete.png" style="height:15px">&nbsp;&nbsp;删&nbsp;除
                         </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -241,7 +314,7 @@
                 <div class="col-md-12" style="background-color:rgba(0,0,0,0.7);height:585px;color:#FFFFFF">
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-hover" id="field_table">
+                            <table class="table table-hover" id="landinfo_table">
                                 <thead>
                                 <tr style="color: #ffffff">
                                     <th style="text-align:center">
@@ -349,17 +422,16 @@
             var landSTd = $("<td></td>").append(item.lands);
             var landNTd = $("<td></td>").append(item.landn);
             var landSizeTd = $("<td></td>").append(item.landsize);
-            var statusTd = $("<td></td>").append(item.status ? "正常" : "异常");
 
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前菜地id
-            editBtn.attr("edit-id", item.id);
+            editBtn.attr("edit-id", item.landid);
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的菜地id
-            delBtn.attr("del-id", item.id);
-            var btnTd = $("<td></td>").append(recBtn).append(" ").append(editBtn).append(" ").append(delBtn);
+            delBtn.attr("del-id", item.landid);
+            var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
                 .append(landIdTd)
@@ -371,32 +443,11 @@
                 .append(landSTd)
                 .append(landNTd)
                 .append(landSizeTd)
-                .append(statusTd)
-                .append(editBtn)
+                .append(btnTd)
                 .appendTo("#landInfo_table tbody");
         });
     }
 
-    //获得年月日      得到日期oTime
-    function getMyDate(str) {
-        var oDate = new Date(str),
-            oYear = oDate.getFullYear(),
-            oMonth = oDate.getMonth() + 1,
-            oDay = oDate.getDate(),
-            oHour = oDate.getHours(),
-            oMin = oDate.getMinutes(),
-            oSen = oDate.getSeconds(),
-            oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay) + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' + getzf(oSen);//最后拼接时间
-        return oTime;
-    };
-
-    //补0操作
-    function getzf(num) {
-        if (parseInt(num) < 10) {
-            num = '0' + num;
-        }
-        return num;
-    }
 
     //解析显示分页信息
     function build_page_info(result) {
@@ -476,29 +527,11 @@
     }
 
     $("#landInfo_add_modal_btn").click(function () {
-        reset_form("#landInfoAddModal form")
-        getConsumerInfo("#landInfoAddModal select");
+            reset_form("#landInfoAddModal form")
         $("#landInfoAddModal").modal({
             backdrop: "static"
         });
     });
-
-    //查出所有的客户信息并显示在下拉列表中
-    <%--function getDealer(ele) {--%>
-    <%--    //清空之前下拉列表的值--%>
-    <%--    $(ele).empty();--%>
-    <%--    $.ajax({--%>
-    <%--        url: "${APP_PATH}/dealers",--%>
-    <%--        type: "GET",--%>
-    <%--        success: function (result) {--%>
-    <%--            // console.info(result);--%>
-    <%--            $.each(result.extend.consumerinfos, function () {--%>
-    <%--                var optionEle = $("<option></option>").append(this.conName);--%>
-    <%--                optionEle.appendTo(ele);--%>
-    <%--            });--%>
-    <%--        }--%>
-    <%--    });--%>
-    <%--}--%>
 
 
     $("#landInfo_save_btn").click(function () {
@@ -522,11 +555,11 @@
     //单个删除
     $(document).on("click", ".delete_btn", function () {
         //1、弹出是否确认删除对话框
-        var landId = $(this).attr("del-id");
+        var landid = $(this).attr("del-id");
         if (confirm("确认删除吗？")) {
             //确认，发送ajax请求删除即可
             $.ajax({
-                url: "${APP_PATH}/landinfo/" + landId,
+                url: "${APP_PATH}/landinfo/" + landid,
                 type: "DELETE",
                 success: function (result) {
                     alert(result.msg);
@@ -555,17 +588,17 @@
     //点击全部删除，就批量删除
     $("#landInfo_delete_all_btn").click(function () {
         //
-        var del_landidstr = "";
+        var landids = "";
         $.each($(".check_item:checked"), function () {
-            //组装菜地id字符串
-            del_landidstr += $(this).parents("tr").find("td:eq(1)").text() + "-";
+            //组装id字符串
+            landids += $(this).parents("tr").find("td:eq(1)").text() + "-";
         });
         //去除删除的id多余的-
-        del_landidstr = del_landidstr.substring(0, del_landidstr.length - 1);
+        landids = landids.substring(0, landids.length - 1);
         if (confirm("确认删除吗？")) {
             //发送ajax请求删除
             $.ajax({
-                url: "${APP_PATH}/landinfo/" + del_landidstr,
+                url: "${APP_PATH}/landinfo/" + landids,
                 type: "DELETE",
                 success: function (result) {
                     alert(result.msg);
@@ -576,63 +609,27 @@
         }
     });
 
-    $(document).on("click", ".rec_btn", function () {
-        getLandInfo($(this).attr("rec-id"));
-        $("#plan_recommend_btn").attr("rec-id", $(this).attr("rec-id"));
-        $("#planRecommendModal").modal({
-            backdrop: "static"
-        });
-        $.ajax({
-            url: "../landinfo/" + $(this).attr("rec-id"),
-            type: "POST",
-            success: function (plan) {
-                $("#plan").text(plan)
-            }
-        });
-
-        function getLandInfo(id) {
-            $.ajax({
-                url: "${APP_PATH}/landinfo/" + id,
-                type: "GET",
-                dataType: "json",
-                success: function (result) {
-                    // console.log(result);
-                    var landInfoDate = result.extend.landInfo;
-                    $("#landId_update_static").text(landInfoDate.landid);
-                    $("#parkId_update_input").val(landInfoDate.parkid);
-                    $("#landNum_update_input").val(landInfoDate.landnum);
-                    $("#landName_update_input").val(landInfoDate.landname);
-                    $("#landE_update_input").val(landInfoDate.lande);
-                    $("#landW_update_input").val(landInfoDate.landw);
-                    $("#landS_update_input").val(landInfoDate.lands);
-                    $("#landN_update_input").val(landInfoDate.landn);
-                    $("#landSize_update_input").val(landInfoDate.landsize);
-                }
-            });
-        }
-    })
-
     //1、我们是按钮创建之前就绑定了click，所以绑定不上。
     //1）、可以在创建按钮的时候绑定。    2）、绑定点击.live()
     //jquery新版没有live，使用on进行替代
     $(document).on("click", ".edit_btn", function () {
-        //查出菜地信息，显示菜地信息
+        //查出信息，显示信息
         getLandInfo($(this).attr("edit-id"));
         //把菜地的id传递给模态框的更新按钮
         $("#landInfo_update_btn").attr("edit-id", $(this).attr("edit-id"));
         reset_form("#landInfoUpdateModal form")
-        getConsumerInfo("#landInfoUpdateModal select");
         $("#landInfoUpdateModal").modal({
             backdrop: "static"
         });
 
-        function getLandInfo(id) {
+        function getLandInfo(landid) {
             $.ajax({
-                url: "${APP_PATH}/landinfo/" + id,
+                url: "${APP_PATH}/landinfo/" + landid,
                 type: "GET",
                 success: function (result) {
                     // console.log(result);
-                    var landInfoDate = result.extend.landInfo;
+                    var landInfoDate = result.extend.landinfo;
+                    // $("#landId_update_static").val(landInfoDate.landid)
                     $("#landId_update_static").text(landInfoDate.landid);
                     $("#parkId_update_input").val(landInfoDate.parkid);
                     $("#landNum_update_input").val(landInfoDate.landnum);
@@ -646,14 +643,14 @@
             });
         }
 
-        $("#field_update_btn").click(function () {
-            //发送ajax请求保存更新的菜地数据
+        $("#landInfo_update_btn").click(function () {
+            //发送ajax请求保存更新的数据
             $.ajax({
                 url: "${APP_PATH}/landinfo/" + $(this).attr("edit-id"),
                 type: "PUT",
                 data: $("#landInfoUpdateModal form").serialize(),
                 success: function (result) {
-                    //alert(result.msg);
+                    // alert(result.msg);
                     //1、关闭对话框
                     $("#landInfoUpdateModal").modal("hide");
                     //2、回到本页面

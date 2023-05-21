@@ -251,17 +251,16 @@
             var uAccountTd = $("<td></td>").append(item.account);
             var uPasswordTd = $("<td></td>").append(item.upassword);
             var roleFlagTd = $("<td></td>").append(item.roleflag);
-
-            var updateTimeTd = $("<td></td>").append(item.updatetime);
+            var updateTimeTd = getMyDate(item.updatetime);
             var statusTd = $("<td></td>").append(item.status ? "正常" : "禁用");
             var statusBtn = $("<button></button>").addClass("btn btn-danger btn-sm status_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-ban-circle")).append("禁/启用");
-            statusBtn.attr("status-id", item.id);
+            statusBtn.attr("status-id", item.uid);
             //为禁用/启用按钮添加一个自定义的属性来表示当前禁用/启用的用户id
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的用户id
-            delBtn.attr("del-id", item.id);
+            delBtn.attr("del-id", item.uid);
             var btnTd = $("<td></td>").append(statusBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
@@ -276,7 +275,18 @@
                 .appendTo("#users_table tbody");
         });
     }
-
+    //获得年月日得到日期oTime
+    function getMyDate(str) {
+        var oDate = new Date(str),
+            oYear = oDate.getFullYear(),
+            oMonth = oDate.getMonth() + 1,
+            oDay = oDate.getDate(),
+            oHour = oDate.getHours(),
+            oMin = oDate.getMinutes(),
+            oSen = oDate.getSeconds(),
+            oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay) + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' + getzf(oSen);//最后拼接时间
+        return oTime;
+    };
 
     //补0操作
     function getzf(num) {
@@ -375,13 +385,13 @@
     //单个禁用/启用
     $(document).on("click", ".status_btn", function () {
         //1、弹出是否确认禁用/启用对话框
-        var userId = $(this).attr("status-id");
+        var uid = $(this).attr("status-id");
         if (confirm("确认要禁用/启用该用户吗")) {
             //确认，发送ajax请求即可
             $.ajax({
-                url: "${APP_PATH}/user/status/" + userId,
+                url: "${APP_PATH}/user/status/" + uid,
                 type: "PUT",
-                data: "#user_table",
+                data: "#users_table",
                 success: function (result) {
                     alert(result.msg);
                     //回到本页

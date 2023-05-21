@@ -38,14 +38,15 @@
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">地块id</label>
+                        <label class="col-sm-2 control-label">地块ID</label>
                         <div class="col-sm-10">
+
                             <input type="text" name="landid" class="form-control" id="landId_add_input"
                                    placeholder="landid">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">园区id</label>
+                        <label class="col-sm-2 control-label">园区ID</label>
                         <div class="col-sm-10">
                             <input type="text" name="parkid" class="form-control" id="parkId_add_input"
                                    placeholder="parkid">
@@ -123,8 +124,9 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">地块ID</label>
                         <div class="col-sm-10">
-                            <input type="text" name="landid" class="form-control" id="landId_update_input"
-                                   placeholder="parkid">
+                            <p class="form-control-static" id="landId_update_static"></p>
+<%--                            <input type="text" name="landid" class="form-control" id="landId_update_input"--%>
+<%--                                   placeholder="你要修改的地块id">--%>
                         </div>
                     </div>
                     <div class="form-group">
@@ -428,7 +430,7 @@
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的菜地id
-            delBtn.attr("del-id", item.id);
+            delBtn.attr("del-id", item.landid);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
@@ -446,26 +448,6 @@
         });
     }
 
-    //获得年月日      得到日期oTime
-    function getMyDate(str) {
-        var oDate = new Date(str),
-            oYear = oDate.getFullYear(),
-            oMonth = oDate.getMonth() + 1,
-            oDay = oDate.getDate(),
-            oHour = oDate.getHours(),
-            oMin = oDate.getMinutes(),
-            oSen = oDate.getSeconds(),
-            oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay) + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' + getzf(oSen);//最后拼接时间
-        return oTime;
-    };
-
-    //补0操作
-    function getzf(num) {
-        if (parseInt(num) < 10) {
-            num = '0' + num;
-        }
-        return num;
-    }
 
     //解析显示分页信息
     function build_page_info(result) {
@@ -573,11 +555,11 @@
     //单个删除
     $(document).on("click", ".delete_btn", function () {
         //1、弹出是否确认删除对话框
-        var landId = $(this).attr("del-id");
+        var landid = $(this).attr("del-id");
         if (confirm("确认删除吗？")) {
             //确认，发送ajax请求删除即可
             $.ajax({
-                url: "${APP_PATH}/landinfo/" + landId,
+                url: "${APP_PATH}/landinfo/" + landid,
                 type: "DELETE",
                 success: function (result) {
                     alert(result.msg);
@@ -627,42 +609,6 @@
         }
     });
 
-    $(document).on("click", ".rec_btn", function () {
-        getLandInfo($(this).attr("rec-id"));
-        $("#plan_recommend_btn").attr("rec-id", $(this).attr("rec-id"));
-        $("#planRecommendModal").modal({
-            backdrop: "static"
-        });
-        $.ajax({
-            url: "../landinfo/" + $(this).attr("rec-id"),
-            type: "POST",
-            success: function (plan) {
-                $("#plan").text(plan)
-            }
-        });
-
-        function getLandInfo(id) {
-            $.ajax({
-                url: "${APP_PATH}/landinfo/" + id,
-                type: "GET",
-                dataType: "json",
-                success: function (result) {
-                    // console.log(result);
-                    var landInfoDate = result.extend.landInfo;
-                    $("#landId_update_input").val(landInfoDate.landid);
-                    $("#parkId_update_input").val(landInfoDate.parkid);
-                    $("#landNum_update_input").val(landInfoDate.landnum);
-                    $("#landName_update_input").val(landInfoDate.landname);
-                    $("#landE_update_input").val(landInfoDate.lande);
-                    $("#landW_update_input").val(landInfoDate.landw);
-                    $("#landS_update_input").val(landInfoDate.lands);
-                    $("#landN_update_input").val(landInfoDate.landn);
-                    $("#landSize_update_input").val(landInfoDate.landsize);
-                }
-            });
-        }
-    })
-
     //1、我们是按钮创建之前就绑定了click，所以绑定不上。
     //1）、可以在创建按钮的时候绑定。    2）、绑定点击.live()
     //jquery新版没有live，使用on进行替代
@@ -676,14 +622,15 @@
             backdrop: "static"
         });
 
-        function getLandInfo(id) {
+        function getLandInfo(landid) {
             $.ajax({
-                url: "${APP_PATH}/landinfo/" + id,
+                url: "${APP_PATH}/landinfo/" + landid,
                 type: "GET",
                 success: function (result) {
                     // console.log(result);
-                    var landInfoDate = result.extend.landInfo;
-                    $("#landId_update_input").val(landInfoDate.landid);
+                    var landInfoDate = result.extend.landinfo;
+                    // $("#landId_update_static").val(landInfoDate.landid)
+                    $("#landId_update_static").text(landInfoDate.landid);
                     $("#parkId_update_input").val(landInfoDate.parkid);
                     $("#landNum_update_input").val(landInfoDate.landnum);
                     $("#landName_update_input").val(landInfoDate.landname);
@@ -697,13 +644,13 @@
         }
 
         $("#landInfo_update_btn").click(function () {
-            //发送ajax请求保存更新的菜地数据
+            //发送ajax请求保存更新的数据
             $.ajax({
                 url: "${APP_PATH}/landinfo/" + $(this).attr("edit-id"),
                 type: "PUT",
                 data: $("#landInfoUpdateModal form").serialize(),
                 success: function (result) {
-                    //alert(result.msg);
+                    // alert(result.msg);
                     //1、关闭对话框
                     $("#landInfoUpdateModal").modal("hide");
                     //2、回到本页面

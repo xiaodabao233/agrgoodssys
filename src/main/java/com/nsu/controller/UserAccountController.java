@@ -46,7 +46,7 @@ public class UserAccountController {
     @ResponseBody
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
     public CommonResult<UserSignUpResult> signUp(HttpSession session, UserSignUpForm userSignUpForm) {
-//将生成的验证码存起来用来比较
+        //将生成的验证码存起来用来比较
         String codeSession = (String) session.getAttribute("validateCode");
 
         logger.info("userSignUpForm={}", userSignUpForm);
@@ -175,9 +175,13 @@ public class UserAccountController {
     }
 
     //控制用户状态的禁用/启用
+
+//    @RequestMapping(value = "/status/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    @RequestMapping(value = "/status/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/status/{uid}")
     public Msg changeStatus(UserAccount userAccount, HttpServletRequest request) {
+        System.out.println(userAccount.getUid());
+        System.out.println(userAccount.getStatus());
         userAccountServiceImpl.changeStatus(userAccount);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),

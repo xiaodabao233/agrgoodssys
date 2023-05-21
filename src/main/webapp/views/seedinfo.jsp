@@ -103,8 +103,9 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">种苗信息编号</label>
                         <div class="col-sm-4">
-                            <input type="text" name="seedid" class="form-control" id="seedid_update_input"
-                                   placeholder="seedid">
+                            <p class="form-control-static" id="seedid_update_static"></p>
+<%--                            <input type="text" name="seedid" class="form-control" id="seedid_update_input"--%>
+<%--                                   placeholder="seedid">--%>
                         </div>
                     </div>
                     <div class="form-group">
@@ -279,7 +280,6 @@
                                     </th>
                                     <th style="text-align:center">种苗信息编号</th>
                                     <th style="text-align:center">种苗名称</th>
-                                    <th style="text-align:center">种植作物名</th>
                                     <th style="text-align:center">农资商编号</th>
                                     <th style="text-align:center">库存量</th>
                                     <th style="text-align:center">进库量</th>
@@ -376,15 +376,15 @@
             var storageNumTd = $("<td></td>").append(item.storagenum);
             var inNumTd = $("<td></td>").append(item.innum);
             var outNumTd = $("<td></td>").append(item.outnum);
-            var updateTimeTd = $("<td></td>").append(item.updatetime);
+            var updateTimeTd = getMyDate(item.updatetime);
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前id
-            editBtn.attr("edit-id", item.id);
+            editBtn.attr("edit-id", item.seedid);
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的id
-            delBtn.attr("del-id", item.id);
+            delBtn.attr("del-id", item.seedid);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
@@ -398,6 +398,27 @@
                 .append(btnTd)
                 .appendTo("#seedInfo_table tbody");
         });
+    }
+
+    //获得年月日得到日期oTime
+    function getMyDate(str) {
+        var oDate = new Date(str),
+            oYear = oDate.getFullYear(),
+            oMonth = oDate.getMonth() + 1,
+            oDay = oDate.getDate(),
+            oHour = oDate.getHours(),
+            oMin = oDate.getMinutes(),
+            oSen = oDate.getSeconds(),
+            oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay) + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' + getzf(oSen);//最后拼接时间
+        return oTime;
+    };
+
+    //补0操作
+    function getzf(num) {
+        if (parseInt(num) < 10) {
+            num = '0' + num;
+        }
+        return num;
     }
 
     //解析显示分页信息
@@ -572,14 +593,14 @@
             backdrop: "static"
         });
 
-        function getSeedInfo(id) {
+        function getSeedInfo(seedid) {
             $.ajax({
-                url: "${APP_PATH}/seedinfo/" + id,
+                url: "${APP_PATH}/seedinfo/" + seedid,
                 type: "GET",
                 success: function (result) {
                     // console.log(result);
-                    var seedInfoData = result.extend.seedinfo;
-                    $("#seedId_update_input").val(seedInfoData.seedid);
+                    var seedInfoData = result.extend.seedInfo;
+                    $("#seedid_update_static").text(seedInfoData.seedid);
                     $("#seedname_update_input").val(seedInfoData.seedname);
                     $("#supplierid_update_input").val(seedInfoData.supplierid);
                     $("#storagenum_update_input").val(seedInfoData.storagenum);
@@ -594,7 +615,7 @@
             $.ajax({
                 url: "${APP_PATH}/seedinfo/" + $(this).attr("edit-id"),
                 type: "PUT",
-                data: $("#SeedInfoUpdateModal form").serialize(),
+                data: $("#seedInfoUpdateModal form").serialize(),
                 success: function (result) {
                     //alert(result.msg);
                     //1、关闭对话框
