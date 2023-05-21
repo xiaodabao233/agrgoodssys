@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-    <title>Agro农场信息管理系统</title>
+    <title>农园农资项目管理</title>
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
@@ -124,15 +124,15 @@
         </div>
         <div class="col-md-9">
             <div class="col-md-12" style="margin-top:25px; margin-bottom:20px">
-                <img src="../agro/UIpic/agro.png" style="height:50px">
+                <img src="../agro/UIpic/agrgoodssys.png" style="height:50px">
             </div>
             <div class="col-md-12" style="background-color:rgba(80,77,77,0.9);height:100%;color:#FFFFFF">
                 <div class="row" style="height:50px">
                     <div class="col-md-3" style="margin-top:10px;text-align:center;font-size:20px">系统公告</div>
                 </div>
-                <div style="font-size:20px"><br>农园农资管理系统<br><br>作者：<br>朱安林<br><br>项目开源地址：<br><a
+                <div style="font-size:20px"><br>农园农资管理系统<br><br>作者：<br>xiaodabao233<br><br>项目开源地址：<br><a
                         href="https://github.com/xiaodabao233/agrgoodssys" style="color: #ffffff">https://github.com/xiaodabao233/agrgoodssys</a>
-                    <br>基本开发环境：JDK11、Apache-Tomcat-8.5、MySQL 5.7 Community Server<br>
+                    <br>基本开发环境：JDK11、Apache-Tomcat-8.5、MySQL 5.7<br>
                     <br>使用框架：Spring+SpringMVC+Mybatis,Maven,Bootstrap<br>
                     <br>逆向工程：MyBatis-Generator
                 </div>

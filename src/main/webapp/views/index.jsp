@@ -43,7 +43,7 @@
     <br><br>
     <div class="row">
         <div class="col-md-9 col-md-offset-3">
-            <img src="../agro/UIpic/agro logo.png" style="height:100px">
+            <img src="../agro/UIpic/agrgoodssys%20logo.png" style="height:100px">
         </div>
     </div>
     <br>
@@ -60,13 +60,13 @@
                 <!-- 轮播（Carousel）项目 -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="../agro/UIpic/pic1.jpg" alt="First slide">
+                        <img src="../agro/UIpic/pic2.jpg" alt="First slide">
                     </div>
                     <div class="item">
-                        <img src="../agro/UIpic/pic2.jpg" alt="Second slide">
+                        <img src="../agro/UIpic/pic3.jpg" alt="Second slide">
                     </div>
                     <div class="item">
-                        <img src="../agro/UIpic/pic3.jpg" alt="Third slide">
+                        <img src="../agro/UIpic/pic1.jpg" alt="Third slide">
                     </div>
                 </div>
                 <!-- 轮播（Carousel）导航 -->
@@ -85,10 +85,10 @@
              style="background-color:rgba(80,77,77,0.9);height:300px;color:#FFFFFF;padding-left:30px">
             <br>农园农资管理系统<br>
             <br>作者：
-            <br>朱安林<br>
+            <br>xiaodabao233<br>
             <br>项目开源地址：<br>
             <a href="https://github.com/xiaodabao233/agrgoodssys" style="color: #ffffff">https://github.com/xiaodabao233/agrgoodssys</a><br>
-            <br>基本开发环境：JDK11、Apache-Tomcat-8.5、MySQL 5.7 Community Server<br>
+            <br>基本开发环境：JDK11、Apache-Tomcat-8.5、MySQL 5.7<br>
             <br>使用框架：Spring+SpringMVC+Mybatis,Maven,Bootstrap<br>
             <br>逆向工程：MyBatis-Generator
         </div>

@@ -25,7 +25,7 @@
     <div class="row" style="height:100px"></div>
     <div class="row">
         <div class="col-md-6 col-md-offset-2">
-            <img src="agro/UIpic/agro logo.png" style="height:100px">
+            <img src="agro/UIpic/agrgoodssys%20logo.png" style="height:100px">
         </div>
     </div>
     <br>

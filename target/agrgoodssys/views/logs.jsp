@@ -44,16 +44,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">邮箱</label>
+                        <label class="col-sm-2 control-label">昵称</label>
                         <div class="col-sm-10">
-                            <p class="form-control-static">${sessionScope.userEmail}</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">注册时间</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static"><fmt:formatDate value="${sessionScope.registerTime}"
-                                                                           pattern="yyyy-MM-dd HH:mm:ss"/></p>
+                            <p class="form-control-static">${sessionScope.userNick}</p>
                         </div>
                     </div>
 
@@ -134,7 +127,7 @@
         </div>
         <div class="col-md-9">
             <div class="col-md-12" style="margin-top:25px; margin-bottom:20px">
-                <img src="../agro/UIpic/agro.png" style="height:50px">
+                <img src="../agro/UIpic/agrgoodssys.png" style="height:50px">
             </div>
             <div class="col-md-12" style="background-color:rgba(80,77,77,0.9);height:100%;color:#FFFFFF">
                 <div class="row" style="height:50px">
