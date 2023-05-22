@@ -235,7 +235,7 @@
                                     <th style="text-align:center">#销售编号</th>
                                     <th style="text-align:center">销售量</th>
                                     <th style="text-align:center">经销商编号</th>
-                                    <th style="text-align:center">更新时间</th>
+                                    <th style="text-align:center; ">更新时间</th>
                                     <th style="text-align:center"><img src="../agro/UIpic/tools.png"
                                                                        style="height:15px">&nbsp;&nbsp;操&nbsp;&nbsp;作
                                     </th>
@@ -323,8 +323,8 @@
             var agroutIdTd = $("<td></td>").append(item.agroutid);
             var outNumTd = $("<td></td>").append(item.outnum);
             var distributorIdTd = $("<td></td>").append(item.distributorid);
-            var updateTimeTd = getMyDate(item.updatetime);
-
+            var updateTime = getMyDate(item.updatetime);
+            var updateTimeTd = $("<td></td>").append(updateTime);
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前id

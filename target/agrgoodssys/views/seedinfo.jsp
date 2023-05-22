@@ -376,7 +376,8 @@
             var storageNumTd = $("<td></td>").append(item.storagenum);
             var inNumTd = $("<td></td>").append(item.innum);
             var outNumTd = $("<td></td>").append(item.outnum);
-            var updateTimeTd = getMyDate(item.updatetime);
+            var updateTime = getMyDate(item.updatetime);
+            var updateTimeTd = $("<td></td>").append(updateTime);
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前id

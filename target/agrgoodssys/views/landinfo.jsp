@@ -235,7 +235,7 @@
                          style="background-color:rgba(0,0,0,0); border-color:transparent; margin-top:20px; text-align:center">
                         <p1 class="panel-title"
                             style="text-align:center;padding-top:30px;height:100px;color:#FFFFFF;font-size:20px;font-family:'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif">
-                            <img src="../agro/UIpic/home.png" style="height:25px">&nbsp;&nbsp;&nbsp;农园农资项目管理&nbsp;&nbsp;&nbsp;
+                            <img src="../agro/UIpic/home.png" style="height:25px">&nbsp;&nbsp;&nbsp;农园农资管理系统&nbsp;&nbsp;&nbsp;
                         </p1>
                         <span class="glyphicon glyphicon-chevron-up right"></span>
                     </div>

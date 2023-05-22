@@ -248,10 +248,11 @@
             var checkBoxTd = $("<td><input type='checkbox' class='check_item'/></td>");
             var uIdTd = $("<td></td>").append(item.uid);
             var uNickNameTd = $("<td></td>").append(item.unickname);
-            var uAccountTd = $("<td></td>").append(item.account);
+            var uAccountTd = $("<td></td>").append(item.uaccount);
             var uPasswordTd = $("<td></td>").append(item.upassword);
             var roleFlagTd = $("<td></td>").append(item.roleflag);
-            var updateTimeTd = getMyDate(item.updatetime);
+            var updateTime = getMyDate(item.updatetime);
+            var updateTimeTd = $("<td></td>").append(updateTime);
             var statusTd = $("<td></td>").append(item.status ? "正常" : "禁用");
             var statusBtn = $("<button></button>").addClass("btn btn-danger btn-sm status_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-ban-circle")).append("禁/启用");
@@ -265,9 +266,9 @@
             //append方法执行完成以后还是返回原来的元素
             $("<tr></tr>").append(checkBoxTd)
                 .append(uIdTd)
+                .append(uNickNameTd)
                 .append(uAccountTd)
                 .append(uPasswordTd)
-                .append(uNickNameTd)
                 .append(roleFlagTd)
                 .append(updateTimeTd)
                 .append(statusTd)

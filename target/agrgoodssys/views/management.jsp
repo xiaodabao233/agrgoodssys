@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-    <title>农园农资项目管理</title>
+    <title>农园农资管理系统</title>
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
@@ -64,7 +64,7 @@
                          style="background-color:rgba(0,0,0,0); border-color:transparent; margin-top:20px; text-align:center">
                         <p1 class="panel-title"
                             style="text-align:center;padding-top:30px;height:100px;color:#FFFFFF;font-size:20px;font-family:'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif">
-                            <img src="../agro/UIpic/home.png" style="height:25px">&nbsp;&nbsp;&nbsp;农园农资项目管理&nbsp;&nbsp;&nbsp;
+                            <img src="../agro/UIpic/home.png" style="height:25px">&nbsp;&nbsp;&nbsp;农园农资管理系统&nbsp;&nbsp;&nbsp;
                         </p1>
                         <span class="glyphicon glyphicon-chevron-up right"></span>
                     </div>
@@ -137,6 +137,8 @@
                     <br>逆向工程：MyBatis-Generator
                 </div>
         </div>
+
+    </div>
         <div class="col-md-1" style="background-color:rgba(0,0,0,0.8); height:615px">
             <div class="panel panel-primary leftMenu" style="background-color:transparent; border-color:transparent">
                 <div class="panel-heading" id="collapseListGroupHeadingr" data-toggle="collapse"
@@ -166,7 +168,6 @@
                 <a href="/views/contactus.jsp" style="color: #ffffff">CONTACT&nbsp;US</a>
             </div>
         </div>
-    </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <%--<script src="js/jquery-1.11.2.min.js"></script>--%>

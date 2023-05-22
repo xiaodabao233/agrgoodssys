@@ -327,7 +327,8 @@
             var cropIdTd = $("<td></td>").append(item.cropid);
             var landIdTd = $("<td></td>").append(item.landid);
             var seedIdTd = $("<td></td>").append(item.seedid);
-            var updateTimeTd = getMyDate(item.updatetime);
+            var updateTime = getMyDate(item.updatetime);
+            var updateTimeTd = $("<td></td>").append(updateTime);
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前农作物id
