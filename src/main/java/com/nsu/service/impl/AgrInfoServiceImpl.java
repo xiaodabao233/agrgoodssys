@@ -20,7 +20,7 @@ public class AgrInfoServiceImpl implements AgrInfoService {
     }
 
     @Override
-    public void saveItems(AgrInfo agrInfo) {
+    public void saveAgrInfo(AgrInfo agrInfo) {
         agrInfoDao.insertSelective(agrInfo);
     }
 

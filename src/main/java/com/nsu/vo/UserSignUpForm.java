@@ -10,7 +10,6 @@ public class UserSignUpForm {
     private String userNick;
     private String userName;
     private String userPass;
-    private String userEmail;
     private String code;
 
     //表单里添加验证码
@@ -25,26 +24,26 @@ public class UserSignUpForm {
     public UserSignUpForm() {
     }
 
-    public UserSignUpForm(String userName, String userPass, String userEmail) {
+    public UserSignUpForm(String userName, String userPass) {
         this.userName = userName;
         this.userPass = userPass;
-        this.userEmail = userEmail;
     }
 
-    public UserSignUpForm(String userNick, String userName, String userPass, String userEmail, String code) {
+    public UserSignUpForm(String userNick, String userName, String userPass, String code) {
         this.userNick = userNick;
         this.userName = userName;
         this.userPass = userPass;
-        this.userEmail = userEmail;
         this.code = code;
     }
 
     @Override
     public String toString() {
-        return "UserSignForm{" +
-                "userName='" + userName + '\'' +
+        return "UserSignUpForm{" +
+                "userId='" + userId + '\'' +
+                ", userNick='" + userNick + '\'' +
+                ", userName='" + userName + '\'' +
                 ", userPass='" + userPass + '\'' +
-                ", userEmail='" + userEmail + '\'' +
+                ", code='" + code + '\'' +
                 '}';
     }
 
@@ -79,12 +78,4 @@ public class UserSignUpForm {
 
     public void setUserPass(String userPass) {
         this.userPass = userPass;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
     }}

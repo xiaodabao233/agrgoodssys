@@ -45,7 +45,7 @@ public class CropServiceImpl implements CropService {
         cropDao.updateByPrimaryKeySelective(crop);
     }
     @Override
-    public Crop getCrops(String cropid) {
+    public Crop getCrop(String cropid) {
         Crop crop = cropDao.selectByPrimaryKey(cropid);
         return crop;
     }

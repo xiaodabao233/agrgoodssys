@@ -39,7 +39,7 @@ public class AgrInfoController {
     @RequestMapping(value = "/agrinfo", method = RequestMethod.POST)
     @ResponseBody
     public Msg saveAgrInfo(AgrInfo agrInfo) {
-        agrInfoServiceImpl.saveItems(agrInfo);
+        agrInfoServiceImpl.saveAgrInfo(agrInfo);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");

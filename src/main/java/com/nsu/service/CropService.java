@@ -20,5 +20,5 @@ public interface CropService {
     public void deleteBatch(List<String> cropids);
 
     //根据ID查询农作物
-    public Crop getCrops(String cropid);
+    public Crop getCrop(String cropid);
 }

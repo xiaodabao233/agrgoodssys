@@ -25,7 +25,7 @@ public class CropController {
 
     @RequestMapping("/crop-list")
     @ResponseBody
-    public Msg getCropWtihJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn,Model model) {
+    public Msg getCropWithJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn,Model model) {
         PageHelper.startPage(pn, 10);
         List<Crop> crops = cropServiceImpl.getAll();
 
@@ -81,7 +81,7 @@ public class CropController {
     @ResponseBody
     public Msg getCrop(@PathVariable("cropid") String cropid) {
 
-        Crop crop = cropServiceImpl.getCrops(cropid);
+        Crop crop = cropServiceImpl.getCrop(cropid);
         return Msg.success().add("crop", crop);
     }
 

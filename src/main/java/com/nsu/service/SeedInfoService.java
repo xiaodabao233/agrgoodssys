@@ -16,7 +16,7 @@ public interface SeedInfoService {
 
     void deleteBatch(List<String> del_seedids);
 
-    //根据记录号查询种植信息
+    //根据id号查询种植信息
     SeedInfo getSeedInfo(String seedid);
 
     //种植信息更新

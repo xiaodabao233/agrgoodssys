@@ -82,7 +82,6 @@ public class UserAccountController {
                 UserAccount account = userAccountService.getUserAccountByUaccount(userNameSession.getAttribute("userNameSession").toString());
                 session.setAttribute("userName",account.getUaccount());
                 session.setAttribute("userNick",account.getUnickname());
-                session.setAttribute("registerTime",account.getUpdatetime());
                 userNameSession.setMaxInactiveInterval(CommonValue.USER_SESSION_TIMEOUT_MINUTE);
                 LogUtil.writeLogs(this.getClass().getName(),
                         Thread.currentThread().getStackTrace()[1].getMethodName(),

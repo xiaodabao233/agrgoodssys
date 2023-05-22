@@ -9,7 +9,7 @@ public interface AgrInfoService {
     public List<AgrInfo> getAll();
 
     //保存
-    public void saveItems(AgrInfo agrInfo);
+    public void saveAgrInfo(AgrInfo agrInfo);
 
     //删除
     public void deleteAgrInfo(String agrid);
