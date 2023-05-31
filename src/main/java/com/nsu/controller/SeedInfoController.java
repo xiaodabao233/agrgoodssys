@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.nsu.entity.Msg;
 import com.nsu.entity.SeedInfo;
-import com.nsu.service.impl.SeedInfoServiceImpl;
+import com.nsu.service.SeedInfoService;
 import com.nsu.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ import java.util.List;
 @Controller
 public class SeedInfoController {
     @Autowired
-    SeedInfoServiceImpl seedInfoServiceImpl;
+    SeedInfoService seedInfoService;
 
     @RequestMapping(value = "/seedinfo-list")
     @ResponseBody
@@ -26,7 +26,7 @@ public class SeedInfoController {
     public Msg getSeedInfoWithJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
         //pageSize：10，指每页显示的数据数
         PageHelper.startPage(pn, 10);
-        List<SeedInfo> seedInfos = seedInfoServiceImpl.getAll();
+        List<SeedInfo> seedInfos = seedInfoService.getAll();
         //navigatePages：5，指在页面需要连续显示的页码数
         PageInfo page = new PageInfo(seedInfos, 5);
         return Msg.success().add("pageInfo", page);
@@ -36,7 +36,7 @@ public class SeedInfoController {
     @RequestMapping(value = "/seedinfo", method = RequestMethod.POST)
     @ResponseBody
     public Msg savaSeedInfo(SeedInfo seedInfo) {
-        seedInfoServiceImpl.savaSeedInfo(seedInfo);
+        seedInfoService.savaSeedInfo(seedInfo);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -47,7 +47,7 @@ public class SeedInfoController {
     @RequestMapping(value = "/seedinfo/{seedid}", method = RequestMethod.PUT)
     @ResponseBody
     public Msg updateSeedInfo(SeedInfo seedInfo, HttpServletRequest request) {
-        seedInfoServiceImpl.updateSeedInfo(seedInfo);
+        seedInfoService.updateSeedInfo(seedInfo);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -65,12 +65,12 @@ public class SeedInfoController {
             for (String string : str_ids) {
                 del_ids.add(string);
             }
-            seedInfoServiceImpl.deleteBatch(del_ids);
+            seedInfoService.deleteBatch(del_ids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
         } else {
-            seedInfoServiceImpl.deleteSeedInfo(seedids);
+            seedInfoService.deleteSeedInfo(seedids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
@@ -82,7 +82,7 @@ public class SeedInfoController {
     @RequestMapping(value = "/seedinfo/{seedid}", method = RequestMethod.GET)
     @ResponseBody
     public Msg getSeedInfo(@PathVariable("seedid") String seedid) {
-        SeedInfo seedInfo = seedInfoServiceImpl.getSeedInfo(seedid);
+        SeedInfo seedInfo = seedInfoService.getSeedInfo(seedid);
         return Msg.success().add("seedInfo", seedInfo);
     }
 

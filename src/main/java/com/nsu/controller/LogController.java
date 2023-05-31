@@ -5,7 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.nsu.entity.Log;
 import com.nsu.entity.Msg;
-import com.nsu.service.impl.LogServiceImpl;
+import com.nsu.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +18,7 @@ import java.util.List;
 public class LogController {
 
     @Autowired
-    LogServiceImpl logServiceImpl;
+    LogService logService;
 
     @RequestMapping("/logs-list")
     @ResponseBody
@@ -26,7 +26,7 @@ public class LogController {
     public Msg getLogsWithJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
         //pageSize：10，指每页显示的数据数
         PageHelper.startPage(pn, 10);
-        List<Log> logs = logServiceImpl.getAll();
+        List<Log> logs = logService.getAll();
         //navigatePages：5，指在页面需要连续显示的页码数
         PageInfo page = new PageInfo(logs, 5);
         return Msg.success().add("pageInfo", page);
@@ -48,10 +48,10 @@ public class LogController {
             for (String string : str_ids) {
                 del_ids.add(Integer.parseInt(string));
             }
-            logServiceImpl.deleteBatch(del_ids);
+            logService.deleteBatch(del_ids);
         } else {
             Integer id = Integer.parseInt(ids);
-            logServiceImpl.deleteLog(id);
+            logService.deleteLog(id);
         }
         return Msg.success();
     }

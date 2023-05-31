@@ -5,7 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.nsu.entity.AgrSales;
 import com.nsu.entity.Msg;
-import com.nsu.service.impl.AgrSalesServiceImpl;
+import com.nsu.service.AgrSalesService;
 import com.nsu.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ import java.util.List;
 public class AgrSalesController {
 
     @Autowired
-    AgrSalesServiceImpl agrSalesServiceImpl;
+    AgrSalesService agrSalesService;
 
     @RequestMapping(value = "/agrsales-list")
     @ResponseBody
@@ -29,7 +29,7 @@ public class AgrSalesController {
     public Msg getAgrSalesWithJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
         //pageSize：10，指每页显示的数据数
         PageHelper.startPage(pn, 10);
-        List<AgrSales> agrSales = agrSalesServiceImpl.getAll();
+        List<AgrSales> agrSales = agrSalesService.getAll();
         //navigatePages：5，指在页面需要连续显示的页码数
         PageInfo page = new PageInfo(agrSales, 5);
         return Msg.success().add("pageInfo", page);
@@ -39,7 +39,7 @@ public class AgrSalesController {
     @RequestMapping(value = "/agrsales", method = RequestMethod.POST)
     @ResponseBody
     public Msg saveAgrSales(AgrSales agrSales) {
-        agrSalesServiceImpl.saveAgrSales(agrSales);
+        agrSalesService.saveAgrSales(agrSales);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -49,7 +49,7 @@ public class AgrSalesController {
     @RequestMapping(value = "/agrsales/{agroutid}", method = RequestMethod.PUT)
     @ResponseBody
     public Msg updateAgrSalers(AgrSales agrSales, HttpServletRequest request) {
-        agrSalesServiceImpl.updateAgrSales(agrSales);
+        agrSalesService.updateAgrSales(agrSales);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -67,12 +67,12 @@ public class AgrSalesController {
             for (String string : str_ids) {
                 del_ids.add(string);
             }
-            agrSalesServiceImpl.deleteBatch(del_ids);
+            agrSalesService.deleteBatch(del_ids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
         } else {
-            agrSalesServiceImpl.deleteAgrSales(agroutids);
+            agrSalesService.deleteAgrSales(agroutids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
@@ -84,7 +84,7 @@ public class AgrSalesController {
     @RequestMapping(value = "/agrsales/{agroutid}", method = RequestMethod.GET)
     @ResponseBody
     public Msg getAgrSales(@PathVariable("agroutid") String agroutid) {
-        AgrSales agrSales = agrSalesServiceImpl.getAgrSales(agroutid);
+        AgrSales agrSales = agrSalesService.getAgrSales(agroutid);
         return Msg.success().add("agrSales", agrSales);
     }
 }

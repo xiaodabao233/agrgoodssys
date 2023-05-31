@@ -40,8 +40,6 @@ public class UserAccountController {
     @Autowired
     private UserAccountService userAccountService;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    @Autowired
-    UserAccountServiceImpl userAccountServiceImpl;
 
     @ResponseBody
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
@@ -111,7 +109,7 @@ public class UserAccountController {
     public Msg getUserAccountWithJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
         //pageSize：10，指每页显示的数据数
         PageHelper.startPage(pn, 10);
-        List<UserAccount> userAccounts = userAccountServiceImpl.getAll();
+        List<UserAccount> userAccounts = userAccountService.getAll();
         //navigatePages：5，指在页面需要连续显示的页码数
         PageInfo page = new PageInfo(userAccounts, 5);
         return Msg.success().add("pageInfo", page);
@@ -160,12 +158,12 @@ public class UserAccountController {
             for (String string : str_ids) {
                 del_ids.add(string);
             }
-            userAccountServiceImpl.deleteBatch(del_ids);
+            userAccountService.deleteBatch(del_ids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
         } else {
-            userAccountServiceImpl.deleteUserAccount(uids);
+            userAccountService.deleteUserAccount(uids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
@@ -181,7 +179,7 @@ public class UserAccountController {
     public Msg changeStatus(UserAccount userAccount, HttpServletRequest request) {
         System.out.println(userAccount.getUid());
         System.out.println(userAccount.getStatus());
-        userAccountServiceImpl.changeStatus(userAccount);
+        userAccountService.changeStatus(userAccount);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");

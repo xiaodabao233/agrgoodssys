@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.nsu.entity.Dealer;
 import com.nsu.entity.Msg;
-import com.nsu.service.impl.DealerServiceImpl;
+import com.nsu.service.DealerService;
 import com.nsu.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import java.util.List;
 public class DealerController {
 
     @Autowired
-    DealerServiceImpl dealerServiceImpl;
+    DealerService dealerService;
 
     @RequestMapping("/dealer-list")
     @ResponseBody
@@ -27,7 +27,7 @@ public class DealerController {
     public Msg getDealerWithJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
         //pageSize：10，指每页显示的数据数
         PageHelper.startPage(pn, 10);
-        List<Dealer> dealers = dealerServiceImpl.getAll();
+        List<Dealer> dealers = dealerService.getAll();
         //navigatePages：5，指在页面需要连续显示的页码数
         PageInfo page = new PageInfo(dealers, 5);
         return Msg.success().add("pageInfo", page);
@@ -37,7 +37,7 @@ public class DealerController {
     @RequestMapping(value = "/dealer", method = RequestMethod.POST)
     @ResponseBody
     public Msg saveDealer(Dealer dealer) {
-        dealerServiceImpl.saveDealer(dealer);
+        dealerService.saveDealer(dealer);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -48,7 +48,7 @@ public class DealerController {
     @ResponseBody
     @RequestMapping(value = "/dealer/{distributorid}", method = RequestMethod.PUT)
     public Msg updateDealer(Dealer dealer, HttpServletRequest request) {
-        dealerServiceImpl.updateDealer(dealer);
+        dealerService.updateDealer(dealer);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -66,12 +66,12 @@ public class DealerController {
             for (String string : str_ids) {
                 del_ids.add(string);
             }
-            dealerServiceImpl.deleteBatch(del_ids);
+            dealerService.deleteBatch(del_ids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
         } else {
-            dealerServiceImpl.deleteDealer(distributorids);
+            dealerService.deleteDealer(distributorids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
@@ -83,7 +83,7 @@ public class DealerController {
     @RequestMapping(value = "/dealer/{distributorid}", method = RequestMethod.GET)
     @ResponseBody
     public Msg getDealer(@PathVariable("distributorid") String distributorid) {
-        Dealer dealer = dealerServiceImpl.getDealer(distributorid);
+        Dealer dealer = dealerService.getDealer(distributorid);
         return Msg.success().add("dealer", dealer);
     }
 
@@ -92,7 +92,7 @@ public class DealerController {
     @ResponseBody
     public Msg getDealers() {
 
-        List<Dealer> list = dealerServiceImpl.getAll();
+        List<Dealer> list = dealerService.getAll();
         return Msg.success().add("dealers", list);
     }
 

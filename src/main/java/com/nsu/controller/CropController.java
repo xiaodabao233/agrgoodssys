@@ -5,7 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.nsu.entity.Crop;
 import com.nsu.entity.Msg;
-import com.nsu.service.impl.CropServiceImpl;
+import com.nsu.service.CropService;
 import com.nsu.util.LogUtil;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +20,14 @@ import java.util.List;
 public class CropController {
 
     @Autowired
-    CropServiceImpl cropServiceImpl;
+    CropService cropService;
 
 
     @RequestMapping("/crop-list")
     @ResponseBody
     public Msg getCropWithJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn,Model model) {
         PageHelper.startPage(pn, 10);
-        List<Crop> crops = cropServiceImpl.getAll();
+        List<Crop> crops = cropService.getAll();
 
         PageInfo page = new PageInfo(crops, 5);
         return Msg.success().add("pageInfo", page);
@@ -36,7 +36,7 @@ public class CropController {
     @RequestMapping(value = "/crop", method = RequestMethod.POST)
     @ResponseBody
     public Msg saveCrop(Crop crop) {
-        cropServiceImpl.saveCrop(crop);
+        cropService.saveCrop(crop);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -46,7 +46,7 @@ public class CropController {
     @RequestMapping(value = "/crop/{cropid}", method = RequestMethod.PUT)
     @ResponseBody
     public Msg updateCrop(Crop crop, HttpServletRequest request) {
-        cropServiceImpl.updateCrop(crop);
+        cropService.updateCrop(crop);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -64,12 +64,12 @@ public class CropController {
             for (String string : str_ids) {
                 del_ids.add(string);
             }
-            cropServiceImpl.deleteBatch(del_ids);
+            cropService.deleteBatch(del_ids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
         } else {
-            cropServiceImpl.deleteCrop(crops);
+            cropService.deleteCrop(crops);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
@@ -81,7 +81,7 @@ public class CropController {
     @ResponseBody
     public Msg getCrop(@PathVariable("cropid") String cropid) {
 
-        Crop crop = cropServiceImpl.getCrop(cropid);
+        Crop crop = cropService.getCrop(cropid);
         return Msg.success().add("crop", crop);
     }
 
@@ -89,7 +89,7 @@ public class CropController {
     @RequestMapping(value = "/crops", method = RequestMethod.GET)
     @ResponseBody
     public Msg getCrops() {
-        List<Crop> list = cropServiceImpl.getAll();
+        List<Crop> list = cropService.getAll();
         return Msg.success().add("crops", list);
     }
 }

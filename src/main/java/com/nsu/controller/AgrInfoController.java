@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.nsu.entity.AgrInfo;
 import com.nsu.entity.Msg;
+import com.nsu.service.AgrInfoService;
 import com.nsu.service.impl.AgrInfoServiceImpl;
 import com.nsu.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import java.util.List;
 public class AgrInfoController {
 
     @Autowired
-    AgrInfoServiceImpl agrInfoServiceImpl;
+    AgrInfoService agrInfoService;
 
     @RequestMapping("/agrinfo-list")
     @ResponseBody
@@ -29,7 +30,7 @@ public class AgrInfoController {
     public Msg getAgrInfoWithJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
         //pageSize：10，指每页显示的数据数
         PageHelper.startPage(pn, 10);
-        List<AgrInfo> agrInfos = agrInfoServiceImpl.getAll();
+        List<AgrInfo> agrInfos = agrInfoService.getAll();
         //navigatePages：5，指在页面需要连续显示的页码数
         PageInfo page = new PageInfo(agrInfos, 5);
         return Msg.success().add("pageInfo", page);
@@ -39,7 +40,7 @@ public class AgrInfoController {
     @RequestMapping(value = "/agrinfo", method = RequestMethod.POST)
     @ResponseBody
     public Msg saveAgrInfo(AgrInfo agrInfo) {
-        agrInfoServiceImpl.saveAgrInfo(agrInfo);
+        agrInfoService.saveAgrInfo(agrInfo);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -50,7 +51,7 @@ public class AgrInfoController {
     @RequestMapping(value = "/agrinfo/{agrid}", method = RequestMethod.PUT)
     @ResponseBody
     public Msg updateAgrInfo(AgrInfo agrInfo, HttpServletRequest request) {
-        agrInfoServiceImpl.updateAgrInfo(agrInfo);
+        agrInfoService.updateAgrInfo(agrInfo);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -68,12 +69,12 @@ public class AgrInfoController {
             for (String string : str_ids) {
                 del_ids.add(string);
             }
-            agrInfoServiceImpl.deleteBatch(del_ids);
+            agrInfoService.deleteBatch(del_ids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
         } else {
-            agrInfoServiceImpl.deleteAgrInfo(agrids);
+            agrInfoService.deleteAgrInfo(agrids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
@@ -85,7 +86,7 @@ public class AgrInfoController {
     @RequestMapping(value = "/agrinfo/{agrid}", method = RequestMethod.GET)
     @ResponseBody
     public Msg getAgrInfo(@PathVariable("agrid") String agrid) {
-        AgrInfo agrInfo = agrInfoServiceImpl.getAgrInfo(agrid);
+        AgrInfo agrInfo = agrInfoService.getAgrInfo(agrid);
         return Msg.success().add("agrInfo", agrInfo);
     }
 }

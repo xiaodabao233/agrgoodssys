@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.nsu.entity.AgrSupplier;
 import com.nsu.entity.Msg;
-import com.nsu.service.impl.AgrSupplierServiceImpl;
+import com.nsu.service.AgrSupplierService;
 import com.nsu.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import java.util.List;
 public class AgrSupplierController {
 
     @Autowired
-    AgrSupplierServiceImpl agrSupplierServiceImpl;
+    AgrSupplierService agrSupplierService;
 
     @RequestMapping("/agrsupplier-list")
     @ResponseBody
@@ -27,7 +27,7 @@ public class AgrSupplierController {
     public Msg getAgrSupplierWithJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
         //pageSize：10，指每页显示的数据数
         PageHelper.startPage(pn, 10);
-        List<AgrSupplier> agrSuppliers = agrSupplierServiceImpl.getAll();
+        List<AgrSupplier> agrSuppliers = agrSupplierService.getAll();
         //navigatePages：5，指在页面需要连续显示的页码数
         PageInfo page = new PageInfo(agrSuppliers, 5);
         return Msg.success().add("pageInfo", page);
@@ -37,7 +37,7 @@ public class AgrSupplierController {
     @RequestMapping(value = "/agrsupplier", method = RequestMethod.POST)
     @ResponseBody
     public Msg saveAgrSupplier(AgrSupplier agrSupplier) {
-        agrSupplierServiceImpl.saveAgrSupplier(agrSupplier);
+        agrSupplierService.saveAgrSupplier(agrSupplier);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -48,7 +48,7 @@ public class AgrSupplierController {
     @RequestMapping(value = "/agrsupplier/{supplierid}", method = RequestMethod.PUT)
     public Msg updateAgrSupplier(AgrSupplier agrSupplier, HttpServletRequest request) {
         System.out.println(agrSupplier.getSupplierid());
-        agrSupplierServiceImpl.updateAgrSupplier(agrSupplier);
+        agrSupplierService.updateAgrSupplier(agrSupplier);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -58,7 +58,7 @@ public class AgrSupplierController {
     @RequestMapping(value = "/agrsupplier/{supplierid}", method = RequestMethod.GET)
     @ResponseBody
     public Msg getAgrSupplier(@PathVariable("supplierid") String agrsupplierid) {
-        AgrSupplier agrsupplier = agrSupplierServiceImpl.getAgrSupplier(agrsupplierid);
+        AgrSupplier agrsupplier = agrSupplierService.getAgrSupplier(agrsupplierid);
         return Msg.success().add("agrsupplier", agrsupplier);
     }
 
@@ -73,12 +73,12 @@ public class AgrSupplierController {
             for (String string : str_ids) {
                 del_ids.add(string);
             }
-            agrSupplierServiceImpl.deleteBatch(del_ids);
+            agrSupplierService.deleteBatch(del_ids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
         } else {
-            agrSupplierServiceImpl.deleteAgrSupplier(agrsupplierids);
+            agrSupplierService.deleteAgrSupplier(agrsupplierids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");

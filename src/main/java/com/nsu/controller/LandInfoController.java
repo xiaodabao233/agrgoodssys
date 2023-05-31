@@ -5,8 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.nsu.entity.LandInfo;
 import com.nsu.entity.Msg;
-import com.nsu.service.impl.CropServiceImpl;
-import com.nsu.service.impl.LandInfoServiceImpl;
+import com.nsu.service.LandInfoService;
 import com.nsu.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,7 @@ import java.util.List;
 @Controller
 public class LandInfoController {
     @Autowired
-    LandInfoServiceImpl landInfoServiceImpl;
+    LandInfoService landInfoService;
 
     @RequestMapping("/landinfo-list")
     @ResponseBody
@@ -30,7 +29,7 @@ public class LandInfoController {
     public Msg getLandInfosWithJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
         //pageSize：10，指每页显示的数据数
         PageHelper.startPage(pn, 10);
-        List<LandInfo> landInfos = landInfoServiceImpl.getAll();
+        List<LandInfo> landInfos = landInfoService.getAll();
         //navigatePages：5，指在页面需要连续显示的页码数
         PageInfo page = new PageInfo(landInfos, 5);
         return Msg.success().add("pageInfo", page);
@@ -40,7 +39,7 @@ public class LandInfoController {
     @RequestMapping(value = "/landinfo", method = RequestMethod.POST)
     @ResponseBody
     public Msg saveLandInfo(LandInfo landInfo) {
-        landInfoServiceImpl.saveLandInfo(landInfo);
+        landInfoService.saveLandInfo(landInfo);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -52,7 +51,7 @@ public class LandInfoController {
     @RequestMapping(value = "/landinfo/{landid}", method = RequestMethod.PUT)
     public Msg updateLandInfo(LandInfo landInfo, HttpServletRequest request) {
         System.out.println(landInfo.getLandid());
-        landInfoServiceImpl.updateLandInfo(landInfo);
+        landInfoService.updateLandInfo(landInfo);
         LogUtil.writeLogs(this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "");
@@ -76,12 +75,12 @@ public class LandInfoController {
             for (String string : str_ids) {
                 del_ids.add(Integer.parseInt(string));
             }
-            landInfoServiceImpl.deleteBatch(Collections.singletonList(landids));
+            landInfoService.deleteBatch(Collections.singletonList(landids));
 //            landInfoServiceImpl.deleteBatch(del_landids);
             LogUtil.writeLogs(this.getClass().getName(), Thread.currentThread().getStackTrace()[1].getMethodName(), "");
         } else {
             Integer id = Integer.parseInt(landids);
-            landInfoServiceImpl.deleteLandInfo(landids);
+            landInfoService.deleteLandInfo(landids);
             LogUtil.writeLogs(this.getClass().getName(),
                     Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "");
@@ -93,7 +92,7 @@ public class LandInfoController {
     @RequestMapping(value = "/landinfo/{landid}", method = RequestMethod.GET)
     @ResponseBody
     public Msg getLandInfo(@PathVariable("landid") String landid) {
-        LandInfo landinfo = landInfoServiceImpl.getLandInfo(landid);
+        LandInfo landinfo = landInfoService.getLandInfo(landid);
         return Msg.success().add("landinfo", landinfo);
     }
 
@@ -101,7 +100,7 @@ public class LandInfoController {
     @RequestMapping("/landinfos")
     @ResponseBody
     public Msg getLandInfo() {
-        List<LandInfo> list = landInfoServiceImpl.getAll();
+        List<LandInfo> list = landInfoService.getAll();
         return Msg.success().add("landinfo", list);
     }
 
